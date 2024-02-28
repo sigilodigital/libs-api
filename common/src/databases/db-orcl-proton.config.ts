@@ -1,7 +1,7 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
 import { DataSourceOptions } from "typeorm";
 
-import { HistoricoSubscriber } from "@libs/auditoria/subscriber/historico.subscriber";
+import { HistoricoSubscriber } from "@sd-root/libs/auditoria/src/subscriber/historic.subscriber";
 
 export default function dbOrclProtonConfig(entityList: EntityClassOrSchema[] = []): DataSourceOptions {
     return {

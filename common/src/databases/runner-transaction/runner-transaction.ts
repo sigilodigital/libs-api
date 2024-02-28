@@ -1,7 +1,7 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
 import { MixedList, QueryRunner } from "typeorm";
 
-import { HistoricoSubscriber } from "@libs/auditoria/subscriber/historico.subscriber";
+import { HistoricoSubscriber } from "@sd-root/libs/auditoria/src/subscriber/historic.subscriber";
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { DbConfigOptionsType, DbOptionType } from "../db-pg-piloto.config";
 
