@@ -1,33 +1,18 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
+  <img src="https://avatars.githubusercontent.com/u/20165699" width="200" alt="TypeORM Logo" />
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
+<p align="center">Este é um repositório/biblioteca de recursos e serviços comuns para uso em projetos que utilizam <a href="https://nestjs.com/" target="_blank">NestJs</a> e <a href="https://typeorm.io/" target="_blank">TypeORM</a>.</p>
+  
 ## Description
 
-Este é um repositório de bibliotecas comuns para uso em projetos que utilizam NestJs com TypeORM.
-
 Foi implementado soluções para auditoria e diversos outros recursos que são comuns em APIs distintas. As soluções deste repositório incluem:
-- **HistoricSubscriber** - Garante que as alterações realizadas no DB sejam auditáveis, registrando um changelog a cada interação que provoque alteração no DB, respondendo as questões: quem, quando, o que
+
+- **AuditLogSubscriber** - Garante que as alterações realizadas no DB sejam auditáveis, registrando um changelog a cada interação que provoque alteração no DB, respondendo as questões: quem, quando, o que
 - **Validations** - Validadores de entrada de dados das APIs, avaliando proriedades de modelos de objeto que sejam obrigatórios, ou que o tipo, tamanho ou valor padrão sejam predeterminados. Também define a resposta apropriada a cada erro na validação dos dados;
 - **RunnerTransaction** - inicializa uma transação que necessite de mais de uma instrução no banco de dados (INSERT, UPDATE, DELETE), com recurso de rollback que assegura o estado inicial caso alguma instrução falhe durante o processo de persistência dos dados no DB;
 - **GenericRepository** - Classe abstrata com as principais implementações de métodos de persistência e consulta de dados no DB, para serem extendidas em classes do tipo Repository;
@@ -38,10 +23,11 @@ Foi implementado soluções para auditoria e diversos outros recursos que são c
 
 ## Installation
 
-No workspace, e o arquivo `.gitmodules` devidamente configurado, rode o comando `git`:
+No workspace, e com o arquivo `.gitmodules` devidamente configurado, rode o comando `git`:
 ```sh
 git submodule update [--remote [--init [--recursive]]]
 ```
+> Os parâmetros dentro dos colchetes são opcionais, mas podem ser necessários em alguns casos, como o `--remote` que é utilizado para sincronizar a branch local com a remota.
 
 ## License
 
