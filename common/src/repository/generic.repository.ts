@@ -57,9 +57,9 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
             await this.queryDataSource.destroy();
     }
 
-    async find(partialEntity: FindManyOptions<E>, entityClass?: EntityTarget<E>): Promise<E[]> {
+    async find<E>(partialEntity: FindManyOptions<E>, entityClass?: EntityTarget<E>): Promise<E[]> {
         await this.init(this.config);
-        const result = await this.queryDataSource.manager.find(entityClass || this.entityClass, partialEntity);
+        const result = await this.queryDataSource.manager.find(entityClass || <EntityTarget<E>>this.entityClass, partialEntity);
         return result;
     }
 
