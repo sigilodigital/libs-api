@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { Request } from 'express';
-import { IAuditoriaConsultarDto } from './models/dto/auditoria-consultar.dto';
-import { IAuditoriaIncluirDto } from './models/dto/auditoria-incluir.dto';
+import { IAuditoriaConsultarDto } from './models/dto/audit-consultar.dto';
+import { IAuditoriaIncluirDto } from './models/dto/audit-incluir.dto';
 
-import { AuditoriaLocalService } from './auditoria-local.service';
-import { AuditoriaConsultarUseCase } from './usecases/auditoria-consultar.usecase';
-import { AuditoriaIncluirUseCase } from './usecases/auditoria-incluir.usecase';
+import { AuditoriaLocalService } from './audit-local.service';
+import { AuditoriaConsultarUseCase } from './usecases/audit-consultar.usecase';
+import { AuditoriaIncluirUseCase } from './usecases/audit-incluir.usecase';
 import { UtilRepository } from '@libs/common/repository/util.repository';
 
 @Injectable()

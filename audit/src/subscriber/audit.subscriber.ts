@@ -2,12 +2,12 @@ import { EntitySubscriberInterface, EventSubscriber, InsertEvent, RemoveEvent, T
 import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 
 import { ParseEntityForSql } from "../local-service/parse-entity-for-sql.service";
-import { IHistoricoDadosPrimarios, AuditoriaEventListDto } from "../models/dto/auditoria-event-list.dto";
+import { IAuditDadosPrimarios, AuditEventListDto } from "../models/dto/audit-log-event-list.dto";
 
-import { AuditoriaIncluirEventListUseCase } from "../usecases/auditoria-incluir-event-list.usecase";
+import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-log-incluir-event-list.usecase";
 import { BadGatewayException } from "@nestjs/common";
 import { UtilRepository } from "@libs/common/internal";
-import { AuditoriaEntity } from "../models/entities/auditoria.entity";
+import { AuditEntity } from "../models/entities/audit-log.entity";
 import { ApiResponse } from "@libs/common/services/response-handler-v1";
 import { formatDateTime } from "@libs/common/utils";
 import { TipoFormatoDataEnum } from "@libs/common/enumerations/tipo-formato-data.enum";
@@ -17,16 +17,16 @@ export type RegistroAlteracaoType = Array<{ property: string, original: string, 
 export type RegistroEventType = Array<{ insert?: InsertEvent<any>, update?: UpdateEvent<any>, delete?: RemoveEvent<any>; }>[0];
 
 @EventSubscriber()
-export class HistoricoSubscriber implements EntitySubscriberInterface {
+export class AuditLogSubscriber implements EntitySubscriberInterface {
 
     public utilRepository: UtilRepository;
     public parseSql: ParseEntityForSql;
-    private auditoriaEventListDto: AuditoriaEventListDto;
+    private auditoriaEventListDto: AuditEventListDto;
 
     constructor() {
         this.utilRepository = new UtilRepository();
         this.parseSql = new ParseEntityForSql();
-        this.auditoriaEventListDto = new AuditoriaEventListDto();
+        this.auditoriaEventListDto = new AuditEventListDto();
     }
 
     async afterInsert(event: InsertEvent<any>): Promise<void | Promise<any>> {
@@ -34,7 +34,7 @@ export class HistoricoSubscriber implements EntitySubscriberInterface {
         if (!event.queryRunner.data['codAcao']) return;
         if (fnSeDadosHistoricoVazio(event.queryRunner?.data)) return;
 
-        const historicoDadosPrimarios = <IHistoricoDadosPrimarios>event.queryRunner.data;
+        const historicoDadosPrimarios = <IAuditDadosPrimarios>event.queryRunner.data;
         event.queryRunner.data = null;
 
         if (event.queryRunner.isTransactionActive)
@@ -47,7 +47,7 @@ export class HistoricoSubscriber implements EntitySubscriberInterface {
         if (!event.queryRunner.data['codAcao']) return;
         if (fnSeDadosHistoricoVazio(event.queryRunner?.data)) return;
 
-        const historicoDadosPrimarios = <IHistoricoDadosPrimarios>event.queryRunner.data;
+        const historicoDadosPrimarios = <IAuditDadosPrimarios>event.queryRunner.data;
 
         if (event.queryRunner.isTransactionActive)
             this.auditoriaEventListDto.add(await this.getAuditoriaEntity({ update: event }, historicoDadosPrimarios));
@@ -59,7 +59,7 @@ export class HistoricoSubscriber implements EntitySubscriberInterface {
         if (!event.queryRunner.data['codAcao']) return;
         if (fnSeDadosHistoricoVazio(event.queryRunner?.data)) return;
 
-        const historicoDadosPrimarios = <IHistoricoDadosPrimarios>event.queryRunner.data;
+        const historicoDadosPrimarios = <IAuditDadosPrimarios>event.queryRunner.data;
 
         if (event.queryRunner.isTransactionActive)
             this.auditoriaEventListDto.add(await this.getAuditoriaEntity({ delete: event }, historicoDadosPrimarios));
@@ -74,12 +74,12 @@ export class HistoricoSubscriber implements EntitySubscriberInterface {
         }
     }
 
-    async getAuditoriaEntity(regEvent: RegistroEventType, historicoDadosPrimarios: IHistoricoDadosPrimarios) {
+    async getAuditoriaEntity(regEvent: RegistroEventType, historicoDadosPrimarios: IAuditDadosPrimarios) {
         const event = regEvent.insert || regEvent.update || regEvent.delete;
         const pKey = await this.getPK(event);
         if (!pKey.value) return
 
-        const historicoDados: AuditoriaEntity = {
+        const historicoDados: AuditEntity = {
             ...historicoDadosPrimarios,
             dtAcao: (await formatDateTime({ typeFormat: TipoFormatoDataEnum.DATABASE })).dateTime,
             codOrgao: 0,

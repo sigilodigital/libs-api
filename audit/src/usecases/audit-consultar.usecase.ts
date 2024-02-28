@@ -1,7 +1,7 @@
 import { Between, Equal, FindOptionsWhere, Like } from 'typeorm';
-import { IAuditoriaConsultarDto } from '../models/dto/auditoria-consultar.dto';
+import { IAuditoriaConsultarDto } from '../models/dto/audit-consultar.dto';
 import { IUtilRepository } from '@libs/common/repository/util.repository';
-import { AuditoriaEntity } from '../models/entities/auditoria.entity';
+import { AuditEntity } from '../models/entities/audit.entity';
 
 
 export class AuditoriaConsultarUseCase {
@@ -9,9 +9,9 @@ export class AuditoriaConsultarUseCase {
     constructor(private repository: IUtilRepository) { }
 
     public async handle(input: IAuditoriaConsultarDto['input']) {
-        await this.repository.init([AuditoriaEntity]);
+        await this.repository.init([AuditEntity]);
 
-        let where: FindOptionsWhere<AuditoriaEntity>;
+        let where: FindOptionsWhere<AuditEntity>;
 
         if (input.dtInicial && input.dtFinal)
             where.dtAcao = Between(input.dtInicial, input.dtFinal);
@@ -22,7 +22,7 @@ export class AuditoriaConsultarUseCase {
         if (input.operacaoTipo)
             where.txtAlteracao = Like(input.operacaoTipo);
 
-        return await this.repository.findBy(where, AuditoriaEntity);
+        return await this.repository.findBy(where, AuditEntity);
     }
 
 }

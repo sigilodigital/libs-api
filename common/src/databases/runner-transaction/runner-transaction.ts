@@ -1,13 +1,13 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
 import { MixedList, QueryRunner } from "typeorm";
 
-import { HistoricoSubscriber } from "@sd-root/libs/auditoria/src/subscriber/historic.subscriber";
+import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit-log.subscriber";
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { DbConfigOptionsType, DbOptionType } from "../db-pg-piloto.config";
 
 export class RunnerTransaction {
 
-    static subscriberList: MixedList<string | Function> = [HistoricoSubscriber];
+    static subscriberList: MixedList<string | Function> = [AuditLogSubscriber];
 
     private static async createQueryRunner(dbConfigOption?: DbConfigOptionsType): Promise<QueryRunner> {
         const queryRunner = (await AppDataSourceAsync.init(dbConfigOption)).createQueryRunner();

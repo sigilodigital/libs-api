@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinTable, ManyToMany, OneToMany, } from "typeorm";
-import { AuditoriaEntity } from "./auditoria.entity";
-import { AuditoriaObjetoEntity } from "./auditoria-objeto.entity";
+import { AuditEntity } from "./audit.entity";
+import { AuditoriaObjetoEntity } from "./audit-objeto.entity";
 
 @Index("PK_TBL_SISTEMA_HISTORICO_ACAO", ["codAcao"], { unique: true })
 @Index("UC_TBL_SISTEMA_HISTORICO_ACAO", ["txtConstante"], { unique: true })

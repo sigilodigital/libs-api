@@ -8,7 +8,7 @@ import { Entity } from 'typeorm-model-generator';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
 import { UtilRepository } from '@libs/common/repository/util.repository';
-import { AuditoriaEntity } from './models/entities/auditoria.entity';
+import { AuditEntity } from './models/entities/audit.entity';
 
 @Injectable()
 export class AuditoriaLocalService {
@@ -16,7 +16,7 @@ export class AuditoriaLocalService {
     readonly url = process.env.API_CONFIG_GERAIS;
     readonly urn = '/configuracao/configuracao-valor-consultar';
     
-    auditoria: AuditoriaEntity = new AuditoriaEntity();
+    auditoria: AuditEntity = new AuditEntity();
     utilRepository: UtilRepository
 
     static async getSqlInsert(entity: Entity, entityClass: EntityTarget<Entity>, entityName: string): Promise<string> {

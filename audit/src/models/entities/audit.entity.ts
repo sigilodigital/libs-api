@@ -5,9 +5,9 @@ import { formatDate } from "@libs/common/utils";
 
 // TODO: Solicitar que acrescentem uma PK para esta entity no BD
 @Entity("TBL_SISTEMA_HISTORICO")
-export class AuditoriaEntity {
+export class AuditEntity {
 
-    constructor(entrada?: AuditoriaEntity) {
+    constructor(entrada?: AuditEntity) {
         if (entrada) {
           Object.keys(entrada).forEach((property) => {
             if (isDate(this[property])) {

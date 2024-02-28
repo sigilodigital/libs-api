@@ -1,5 +1,5 @@
 import { Column, Entity, Index, ManyToMany } from "typeorm";
-import { AuditoriaAcaoEntity } from "./auditoria-acao.entity";
+import { AuditoriaAcaoEntity } from "./audit-acao.entity";
 
 @Index("PK_SISTEMA_HISTORICO_OBJETO", ["codObjeto"], { unique: true })
 @Entity("TBL_SISTEMA_HISTORICO_OBJETO")
