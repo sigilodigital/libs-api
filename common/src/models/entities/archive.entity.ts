@@ -6,11 +6,14 @@ export class ArchiveEntity {
     @Column('uuid', { generated: 'uuid', primary: true })
     id?: string;
 
-    @Column("text", { name: "name", nullable: true })
+    @Column("text", { name: "name" })
     name: string | null;
 
-    @Column("text", { name: "path", nullable: true })
+    @Column("text", { name: "path" })
     path: string | null;
+
+    @Column("text", { name: "mimetype" })
+    mimetype: string | null;
 
     @Column("text", { name: "content", nullable: true })
     content: string | null;
@@ -20,9 +23,6 @@ export class ArchiveEntity {
 
     @Column("text", { name: "hashSHA256", nullable: true })
     hashSHA256: string | null;
-
-    @Column("text", { name: "mimetype", nullable: true })
-    mimetype: string | null;
 
     @Column("boolean", { name: "isActive", default: true })
     isActive: boolean;

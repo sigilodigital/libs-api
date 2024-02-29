@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
-import { IMessage } from "./code-messages";
+import { IMessage } from "./api-messages";
 import { GlobalService } from "./global.service";
 
 @Injectable()

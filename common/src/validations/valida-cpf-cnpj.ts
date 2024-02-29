@@ -2,7 +2,7 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
 import { ApiResponse } from '../services/api-response-static';
-import { IMessage, MSG } from '../services/code-messages';
+import { IMessage, MSG } from '../services/api-messages';
 import { validaCNPJ, validaCPF } from '../utils';
 
 @ValidatorConstraint({ name: 'ValidaCpfCnpj', async: true })
@@ -31,7 +31,10 @@ export class ValidaCpfCnpj implements ValidatorConstraintInterface {
             property: args.property,
             valueArg: args.value,
             error: {
-                message: `Validação do objeto ${args.targetName} :: propriedade: ${args.property}, valor: ${args.value}, tipo: ${typeof args.value}`,
+                message: `Validação do objeto ${args.targetName} :: `
+                    + `propriedade: ${args.property}, `
+                    + `valor: ${args.value}, `
+                    + `tipo: ${typeof args.value}`,
                 context: {
                     className: this.LOG_CLASS_NAME,
                     methodName: this.message.name,

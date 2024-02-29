@@ -5,7 +5,7 @@ import { DataSource, EntityTarget, FindManyOptions, FindOptionsWhere, QueryRunne
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { RunnerTransaction } from "@libs/common/databases/runner-transaction/runner-transaction";
 import { ApiResponse } from "@libs/common/services/api-response";
-import { MSG } from "../services/code-messages";
+import { MSG } from "../services/api-messages";
 
 export abstract class GenericRepository_v1<E> implements IGenericRepository<E> {
     protected LOG_CLASS_NAME = 'GenericRepository';

@@ -1,6 +1,6 @@
 import { Injectable, HttpException } from '@nestjs/common';
 import { ApiResponse, IApiResponseMessage } from '@libs/common/services/api-response';
-import { IMessage } from '@libs/common/services/code-messages';
+import { IMessage } from '@libs/common/services/api-messages';
 
 export interface IExceptionHttpService {
     input: { httpStatusCode: number, errMessage: string; } & IApiResponseMessage<any, any>,

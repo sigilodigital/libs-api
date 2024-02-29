@@ -1,24 +1,17 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
-import { ApiResponse } from '@libs/common/services/api-response';
+import { ApiResponse } from '@libs/common/services/api-response-static';
 import { IConstraintSchema } from '@sd-root/libs/common/src/models/interfaces/ConstraintsSchema';
-import { IMessage, MSG } from '@libs/common/services/code-messages';
+import { IMessage, MSG } from '@libs/common/services/api-messages';
 
 @ValidatorConstraint({ name: 'ValidaSchema', async: true })
 export class ValidaSchema implements ValidatorConstraintInterface {
     LOG_CLASS_NAME = "ValidaSchema";
 
-    private apiResponse: ApiResponse;
-
-    constructor() { this.apiResponse = new ApiResponse(); }
-
     async validate(value: string, args: ValidationArguments) {
+
         const schema = <IConstraintSchema>args.constraints[0];
-
-        if ((!value && schema.nullable) || (value && typeof value === 'object'))
-            return true;
-
         value = value.toString();
 
         this.validaNulo(value, schema, args);
@@ -80,7 +73,7 @@ export class ValidaSchema implements ValidatorConstraintInterface {
     }
 
     message(objMessage: IMessage, args: ValidationArguments) {
-        const objError = this.apiResponse.handler({
+        const objError = ApiResponse.handler({
             objMessage: objMessage,
             property: args.property,
             valueArg: args.value,

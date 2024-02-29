@@ -1,6 +1,6 @@
 import { BadRequestException, HttpException } from "@nestjs/common";
 
-import { MSG } from "../services/code-messages";
+import { MSG } from "../services/api-messages";
 
 export class SDExpectJest {
     static async fnNotCatchError(error: any, expect: jest.Expect) {

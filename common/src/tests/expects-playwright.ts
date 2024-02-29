@@ -1,7 +1,7 @@
 import { BadRequestException, HttpException } from "@nestjs/common";
 import { Expect, Response } from '@playwright/test';
 
-import { MSG } from "../services/code-messages";
+import { MSG } from "../services/api-messages";
 
 export class SDExpectPlaywright {
     
