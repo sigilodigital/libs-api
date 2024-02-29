@@ -10,7 +10,7 @@ import { UtilRepository } from "@libs/common";
 import { AuditEntity } from "../models/entities/audit-log.entity";
 import { ApiResponse } from "@libs/common/services/response-handler-v1";
 import { formatDateTime } from "@libs/common/utils";
-import { TipoFormatoDataEnum } from "@libs/common/enumerations/tipo-formato-data.enum";
+import { TipoFormatoDataEnum } from "@sd-root/libs/common/src/models/enumerations/tipo-formato-data.enum";
 
 
 export type RegistroAlteracaoType = Array<{ property: string, original: string, alterado: string; }>;

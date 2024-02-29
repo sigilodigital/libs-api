@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
+
 import { ApiResponse } from '../services/api-response-static';
 import { IMessage, MSG } from '../services/code-messages';
 import { validaCNPJ, validaCPF } from '../utils';

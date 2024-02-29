@@ -1,5 +1,5 @@
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
-import { IConstraintSchema } from '../interfaces/ConstraintsSchema';
+import { IConstraintSchema } from '../models/interfaces/ConstraintsSchema';
 
 @ValidatorConstraint({ name: 'ValidaCampoObrigatorio', async: true })
 export class ValidaCampoObrigatorio implements ValidatorConstraintInterface {
