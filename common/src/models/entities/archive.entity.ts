@@ -1,10 +1,7 @@
 import { Column, Entity } from "typeorm";
 
 @Entity({ name: 'TBL_ARCHIVE' })
-export class ArchiveEntity {
-
-    @Column('uuid', { generated: 'uuid', primary: true })
-    id?: string;
+export class ArchiveEntity extends EntityClass  {
 
     @Column("text", { name: "name" })
     name: string | null;
