@@ -6,7 +6,7 @@ import { IAuditDadosPrimarios, AuditEventListDto } from "../models/dto/audit-log
 
 import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-log-incluir-event-list.usecase";
 import { BadGatewayException } from "@nestjs/common";
-import { UtilRepository } from "@libs/common/internal";
+import { UtilRepository } from "@libs/common";
 import { AuditEntity } from "../models/entities/audit-log.entity";
 import { ApiResponse } from "@libs/common/services/response-handler-v1";
 import { formatDateTime } from "@libs/common/utils";

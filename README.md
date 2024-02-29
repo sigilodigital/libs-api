@@ -3,10 +3,7 @@
   <img src="https://avatars.githubusercontent.com/u/20165699" width="200" alt="TypeORM Logo" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-<p align="center">Este é um repositório/biblioteca de recursos e serviços comuns para uso em projetos que utilizam <a href="https://nestjs.com/" target="_blank">NestJs</a> e <a href="https://typeorm.io/" target="_blank">TypeORM</a>.</p>
+<p align="center">Este é um repositório/biblioteca de recursos e serviços comuns para uso em projetos que utilizam <a href="https://nestjs.com/" target="_blank">NestJS</a> e <a href="https://typeorm.io/" target="_blank">TypeORM</a>.</p>
   
 ## Description
 
@@ -31,4 +28,4 @@ git submodule update [--remote [--init [--recursive]]]
 
 ## License
 
-Este repositório é restrito destinado somente ao projeto em destaque.
+MIT License

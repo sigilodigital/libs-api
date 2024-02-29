@@ -7,8 +7,8 @@
  * outputError?: object criar objeto com {acao: "ação necessária para mitigar resolução do erro"}
  */
 
-import { MensagenEnum } from "../enumerations/mensagens.enum";
-import { GlobalService } from "./global.service";
+import { MensagenEnum } from "../../enumerations/mensagens.enum";
+import { GlobalService } from "../global.service";
 
 export class ApiResponse {
     static handler(input: IMensagem): IAPIResponse<any> {

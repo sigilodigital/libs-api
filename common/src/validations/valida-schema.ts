@@ -2,7 +2,7 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
 import { IConstraintSchema } from '@libs/common/interfaces/ConstraintsSchema';
-import { ApiResponse } from '@libs/common/services/response-handler';
+import { ApiResponse } from '@libs/common/services/api-response';
 import { IMessage, MSG } from '@libs/common/services/code-messages';
 
 @ValidatorConstraint({ name: 'ValidaSchema', async: true })
@@ -16,8 +16,10 @@ export class ValidaSchema implements ValidatorConstraintInterface {
     async validate(value: string, args: ValidationArguments) {
         const schema = <IConstraintSchema>args.constraints[0];
 
-        if ((!value && schema.nullable) || typeof value === 'object')
+        if ((!value && schema.nullable) || (value && typeof value === 'object'))
             return true;
+
+        value = value.toString();
 
         this.validaNulo(value, schema, args);
 
@@ -33,12 +35,12 @@ export class ValidaSchema implements ValidatorConstraintInterface {
 
     }
 
-    validaNulo(value, schema: IConstraintSchema, args: ValidationArguments) {
+    validaNulo(value: string, schema: IConstraintSchema, args: ValidationArguments) {
         if ((!value) && !schema.nullable)
             this.message(MSG.ERR_FIELD_N_INFO, args);
     }
 
-    validaTipo(value, schema: IConstraintSchema, args: ValidationArguments) {
+    validaTipo(value: string, schema: IConstraintSchema, args: ValidationArguments) {
         if (schema.type && schema.type !== typeof value)
             this.message(MSG.ERR_FIELD_TIPO, args);
     }
@@ -49,17 +51,17 @@ export class ValidaSchema implements ValidatorConstraintInterface {
             this.message(MSG.ERR_FIELD_TAM, args);
 
         function minLength(value: string, schema: IConstraintSchema) {
-            const r = (schema.minLength) ? value.toString().length < schema.minLength : false;
+            const r = (schema.minLength) ? value.length < schema.minLength : false;
             return r;
         }
 
         function maxLength(value: string, schema: IConstraintSchema) {
-            const r = (schema.maxLength) ? value.toString().length > schema.maxLength : false;
+            const r = (schema.maxLength) ? value.length > schema.maxLength : false;
             return r;
         }
 
         function orLength(value: string, schema: IConstraintSchema) {
-            const r = (schema.orLength) ? !(schema.orLength.includes(value.toString().length)) : false;
+            const r = (schema.orLength) ? !(schema.orLength.includes(value.length)) : false;
             return r;
         }
     }

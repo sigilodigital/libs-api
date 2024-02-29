@@ -1,9 +1,30 @@
 import { isDate } from "class-validator";
-import configurations from "../configs";
+import { cnpj, cpf } from 'cpf-cnpj-validator';
+
 import { TipoFormatoDataEnum } from "../enumerations/tipo-formato-data.enum";
 
+export function validaCPF(valor: string): boolean {
+    return cpf.isValid(valor);
+}
+
+export function validaCNPJ(valor: string): boolean {
+    return cnpj.isValid(valor);
+}
 export async function somenteNumeros(entrada: string): Promise<boolean> {
     return !!entrada?.match(/^\d+$/);
+}
+
+export function fnRemoveNull(obj: unknown): Object {
+    let newObj = {};
+    Object.keys(obj).forEach((property) => {
+        if (obj[property]) newObj = { [property]: obj[property], ...newObj };
+    });
+    return newObj;
+}
+
+export function fnIsDate(date: any): boolean {
+    const result = isDate(date); return result;
+    return date && Object.prototype.toString.call(date) === "[object Date]" && date instanceof Date;
 }
 
 export async function formatDate(date = new Date()) {
@@ -98,13 +119,6 @@ export async function formatDateTime(input: IDateFormat['input']): Promise<IDate
         }
     }
 
-}
-
-
-export async function isFnDate(date: any) {
-    const validaDataEntrada = new Date(date);
-    const resultadoValidacao = await isDate(validaDataEntrada);
-    return resultadoValidacao;
 }
 
 export async function validaData(stringData: string) {

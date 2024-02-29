@@ -1,8 +1,8 @@
 import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type';
-import { EntityTarget, QueryRunner } from 'typeorm';
+import { QueryRunner } from 'typeorm';
 
-import { GenericRepository, IGenericRepository } from '../internal';
 import { Inject, Injectable } from '@nestjs/common';
+import { GenericRepository, IGenericRepository } from '..';
 
 @Injectable()
 export class UtilRepository<T = unknown> extends GenericRepository<T> implements IUtilRepository<T> {

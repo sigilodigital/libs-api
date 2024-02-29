@@ -26,15 +26,14 @@ export class UtilService implements IUtilService {
         return result;
     }
 
-    async encrypt(pass: string): Promise<{ hash: string; }> {
+    async hashEncrypt(text: string): Promise<{ hash: string; }> {
         const saltOrRounds = 10;
-        const password = pass;
-        const hashGenerate = await hash(password, saltOrRounds);
+        const hashGenerate = await hash(text, saltOrRounds);
         return { hash: hashGenerate };
     }
 
-    async decrypt(password: string, hash: string): Promise<boolean> {
-        const isMatch = await compare(password, hash);
+    async hashCompare(text: string, hash: string): Promise<boolean> {
+        const isMatch = await compare(text, hash);
         return isMatch;
     }
 
@@ -43,6 +42,6 @@ export class UtilService implements IUtilService {
 export interface IUtilService {
     tokenGenerate(loginData: unknown, options?: { expiresIn?: string; }): Promise<string>;
     tokenDecodeWithoutVerify(token: string): unknown;
-    encrypt(pass: string): Promise<{ hash: string; }>;
-    decrypt(password: string, hash: string): Promise<boolean>;
+    hashEncrypt(pass: string): Promise<{ hash: string; }>;
+    hashCompare(password: string, hash: string): Promise<boolean>;
 }

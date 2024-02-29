@@ -3,7 +3,7 @@ import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-clas
 import { DataSource, EntityTarget, FindManyOptions, FindOptionsWhere, QueryRunner, UpdateResult } from "typeorm";
 
 import { AppDataSourceAsync } from "@libs/common/databases";
-import { ApiResponse } from "@libs/common/services/response-handler";
+import { ApiResponse } from "@libs/common/services/api-response";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
 import { DbConfigOptionsType } from "../databases/db-pg-piloto.config";
 

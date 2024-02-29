@@ -1,11 +1,13 @@
-import { ApiResponse, IApiResponseMessage } from '@libs/common/services/response-handler';
-import { HttpException, Injectable } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
+import { ApiResponse, IApiResponseMessage } from '@libs/common/services/api-response';
+import { IMessage } from '@libs/common/services/code-messages';
 
-export interface IExceptionHttpService extends IApiResponseMessage<any, any> { 
-    httpStatusCode: number, 
-    errMessage: string; 
+export interface IExceptionHttpService {
+    input: { httpStatusCode: number, errMessage: string; } & IApiResponseMessage<any, any>,
+    output: {
+        message: string;
+    };
 }
-
 @Injectable()
 export class ExceptionHttpService {
 
