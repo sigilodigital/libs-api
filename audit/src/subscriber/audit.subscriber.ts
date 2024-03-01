@@ -2,15 +2,16 @@ import { EntitySubscriberInterface, EventSubscriber, InsertEvent, RemoveEvent, T
 import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 
 import { ParseEntityForSql } from "../local-service/parse-entity-for-sql.service";
-import { IAuditDadosPrimarios, AuditEventListDto } from "../models/dto/audit-log-event-list.dto";
+import { IAuditDadosPrimarios, AuditEventListDto } from "../models/dto/audit-event-list.dto";
 
-import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-log-incluir-event-list.usecase";
+import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-incluir-event-list.usecase";
 import { BadGatewayException } from "@nestjs/common";
 import { UtilRepository } from "@libs/common";
-import { AuditEntity } from "../models/entities/audit-log.entity";
-import { ApiResponse } from "@libs/common/services/response-handler-v1";
+import { AuditEntity } from "../models/entities/audit.entity";
 import { formatDateTime } from "@libs/common/utils";
 import { TipoFormatoDataEnum } from "@sd-root/libs/common/src/models/enumerations/tipo-formato-data.enum";
+import { ApiResponse } from "@sd-root/libs/common/src/services/api-response-static";
+import { MSG } from "@sd-root/libs/common/src/services/api-messages";
 
 
 export type RegistroAlteracaoType = Array<{ property: string, original: string, alterado: string; }>;
@@ -113,7 +114,7 @@ export class AuditLogSubscriber implements EntitySubscriberInterface {
         const entityOld = await event.queryRunner.manager.findOne(entityName, { where: { [pKey.key]: pKey.value } });
 
         if (!entityNew || !entityOld)
-            throw new BadGatewayException(ApiResponse.handler({ codMessage: 60 }));
+            throw new BadGatewayException(ApiResponse.handler({ objMessage: MSG.DEFAULT_FALHA }));
 
         let texto = `Alteração de registro:\n`;
         const c = new Comparador();

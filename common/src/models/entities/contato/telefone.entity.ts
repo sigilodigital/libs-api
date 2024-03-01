@@ -1,8 +1,10 @@
-import { Column, Entity, ManyToOne, JoinColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+
+import { IdEntityAbstractClass } from "../id-entity-class.entity";
 import { ContatoEntity } from "./contato.entity";
 
 @Entity({ name: 'TBL_CONTATO_TELEFONE' })
-export class TelefoneEntity extends EntityClass  {
+export class TelefoneEntity extends IdEntityAbstractClass  {
 
     @Column()
     number: string;

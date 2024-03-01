@@ -1,7 +1,7 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
 import { MixedList, QueryRunner } from "typeorm";
 
-import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit-log.subscriber";
+import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit.subscriber";
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { DbConfigOptionsType, DbOptionType } from "../db-pg-piloto.config";
 
