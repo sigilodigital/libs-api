@@ -4,7 +4,10 @@
   "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "git:clu": "git config --local user.name \"Haroldo Cruz\" ; git config --local user.email \"haroldocruzdr@gmail.com\"",
+    "find:pack:update": "npx ncu",
+    "circular:madge": "npx madge --circular --extensions ts ./",
+    "circular:dpdm": "npx dpdm ./common/src/common.module.ts ./audit/src/audit.module.ts"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,8 @@
     "typeorm-model-generator": "^0.4.6"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2"
+    "@playwright/test": "^1.41.2",
+    "dpdm": "^3.14.0",
+    "madge": "^6.1.0"
   }
 }
