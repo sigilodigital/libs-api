@@ -1,4 +1,5 @@
-import { UtilRepository } from "@libs/common";
+// import { UtilRepository } from "@libs/common";
+import { UtilRepository } from "@sd-root/libs/common/src/repository/util.repository";
 import { AuditEntity } from "../models/entities/audit.entity";
 import { AuditoriaIncluirUseCase } from './audit-incluir.usecase';
 

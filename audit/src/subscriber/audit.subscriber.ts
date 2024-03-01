@@ -2,17 +2,17 @@ import { EntitySubscriberInterface, EventSubscriber, InsertEvent, RemoveEvent, T
 import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 
 import { ParseEntityForSql } from "../local-service/parse-entity-for-sql.service";
-import { IAuditDadosPrimarios, AuditEventListDto } from "../models/dto/audit-event-list.dto";
+import { AuditEventListDto, IAuditDadosPrimarios } from "../models/dto/audit-event-list.dto";
 
-import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-incluir-event-list.usecase";
-import { BadGatewayException } from "@nestjs/common";
-import { UtilRepository } from "@libs/common";
-import { AuditEntity } from "../models/entities/audit.entity";
 import { formatDateTime } from "@libs/common/utils";
+import { BadGatewayException } from "@nestjs/common";
 import { TipoFormatoDataEnum } from "@sd-root/libs/common/src/models/enumerations/tipo-formato-data.enum";
-import { ApiResponse } from "@sd-root/libs/common/src/services/api-response-static";
+// import { UtilRepository } from "@libs/common";
+import { UtilRepository } from "@sd-root/libs/common/src/repository/util.repository";
 import { MSG } from "@sd-root/libs/common/src/services/api-messages";
-
+import { ApiResponse } from "@sd-root/libs/common/src/services/api-response-static";
+import { AuditEntity } from "../models/entities/audit.entity";
+import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-incluir-event-list.usecase";
 
 export type RegistroAlteracaoType = Array<{ property: string, original: string, alterado: string; }>;
 export type RegistroEventType = Array<{ insert?: InsertEvent<any>, update?: UpdateEvent<any>, delete?: RemoveEvent<any>; }>[0];

@@ -5,7 +5,7 @@ import { env } from "./envSchema";
 
 export type DbConfigOptionsType = {
     dbOption?: DbOptionType;
-    subscriberList?: MixedList<string | Function>;
+    subscriberList?: (string | Function)[];
     entityList: EntityClassOrSchema[]
 }
 export type DbConfigType2 = (eL: EntityClassOrSchema[]) => DataSourceOptions;
@@ -47,7 +47,7 @@ export function dbConfig_pgPilotoDefault(dbConfigOption: DbConfigOptionsType): D
     return {
         ...pgPilotoConfig,
         // host: 'pg_piloto',
-        subscribers: [...dbConfigOption.entityList],
+        subscribers: [...dbConfigOption.subscriberList],
         entities: [...dbConfigOption.entityList]
     } as DataSourceOptions;
 }
@@ -55,7 +55,7 @@ export function dbConfig_pgPilotoFixture(dbConfigOption: DbConfigOptionsType): D
     return {
         ...pgPilotoConfig,
         host: 'localhost',
-        subscribers: [...dbConfigOption.entityList],
+        subscribers: [...dbConfigOption.subscriberList],
         entities: [...dbConfigOption.entityList]
     } as DataSourceOptions;
 }
@@ -65,7 +65,7 @@ function dbConfig_pgPilotoTest(dbConfigOption: DbConfigOptionsType): DataSourceO
         ...pgPilotoConfig,
         host: 'localhost',
         schema: 'test',
-        subscribers: [...dbConfigOption.entityList],
+        subscribers: [...dbConfigOption.subscriberList],
         entities: [...dbConfigOption.entityList]
     } as DataSourceOptions;
 }

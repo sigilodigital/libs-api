@@ -1,13 +1,13 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
-import { MixedList, QueryRunner } from "typeorm";
+import { QueryRunner } from "typeorm";
 
-import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit.subscriber";
 import { AppDataSourceAsync } from "@libs/common/databases";
+import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit.subscriber";
 import { DbConfigOptionsType, DbOptionType } from "../db-pg-piloto.config";
 
 export class RunnerTransaction {
 
-    static subscriberList: MixedList<string | Function> = [AuditLogSubscriber];
+    static subscriberList: (string | Function)[] = [AuditLogSubscriber];
 
     private static async createQueryRunner(dbConfigOption?: DbConfigOptionsType): Promise<QueryRunner> {
         const queryRunner = (await AppDataSourceAsync.init(dbConfigOption)).createQueryRunner();
@@ -16,13 +16,13 @@ export class RunnerTransaction {
     }
 
     public static async startTransaction(entityList: EntityClassOrSchema[], dbOption?: DbOptionType): Promise<QueryRunner> {
-        
-        const dbConfigOptions:DbConfigOptionsType = {
-            dbOption: dbOption, 
+
+        const dbConfigOptions: DbConfigOptionsType = {
+            dbOption: dbOption,
             subscriberList: this.subscriberList,
             entityList: entityList
-        }
-        
+        };
+
         const queryRunner = await RunnerTransaction.createQueryRunner(dbConfigOptions);
         await queryRunner.connect();
         await queryRunner.startTransaction();
