@@ -29,19 +29,19 @@ export class SDExpectPlaywright {
     }
 
     static async fnCatchErrorForRequired(error: any, expect: Expect) {
-        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_N_INFO.code);
+        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_NULL.code);
     }
 
     static async fnCatchErrorForSize(error: any, expect: Expect) {
-        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_TAM.code);
+        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_LENGTH.code);
     }
 
     static async fnCatchErrorForType(error: any, expect: Expect) {
-        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_TIPO.code);
+        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_TYPE.code);
     }
 
     static async fnCatchErrorForValue(error: any, expect: Expect) {
-        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_VALOR.code);
+        expect(error.response).toHaveProperty('status.statusCode', MSG.ERR_FIELD_VALUE.code);
     }
 
 };

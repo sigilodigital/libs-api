@@ -18,12 +18,12 @@ export const MSG = {
     REG_ENCO:  { text: "Registro encontrado.", code: 13 },
     REG_N_ENCONT:  { text: "Registro não encontrado.", code: 14 },
     // ERROR - FIELD VALIDATION
-    ERR_FIELD_INVA:  { text: "Campo inválido.", code: 20 },
-    ERR_FIELD_N_SOLI:  { text: "Campo @campo não solicitado.", code: 21 },
-    ERR_FIELD_N_INFO:  { text: "Campo @campo não informado.", code: 22 },
-    ERR_FIELD_TIPO:  { text: "Tipo do campo @campo é inválido.", code: 23 },
-    ERR_FIELD_TAM:  { text: "Tamanho do campo @campo é inválido.", code: 24 },
-    ERR_FIELD_VALOR:  { text: "Valor do campo @campo é inválido.", code: 25 },
+    ERR_FIELD_INVALID:  { text: "Campo inválido.", code: 20 },
+    ERR_FIELD_EXTRA:  { text: "Campo @campo não solicitado.", code: 21 },
+    ERR_FIELD_NULL:  { text: "Campo @campo não informado.", code: 22 },
+    ERR_FIELD_TYPE:  { text: "Tipo do campo @campo é inválido.", code: 23 },
+    ERR_FIELD_LENGTH:  { text: "Tamanho do campo @campo é inválido.", code: 24 },
+    ERR_FIELD_VALUE:  { text: "Valor do campo @campo é inválido.", code: 25 },
     // ERROR - AUTH
     ERR_AUTH_TOKEN_N_INFORMED:  { text: "Token não informado.", code: 70 },
     ERR_AUTH_TOKEN_INVALID:  { text: "Token inválido.", code: 71 },

@@ -28,7 +28,7 @@ export class ValidaCampoPorSchema implements ValidatorConstraintInterface {
 
         // nulo
         if (!value && !property.nullable) {
-            this.objMessage = MSG.ERR_FIELD_N_INFO;
+            this.objMessage = MSG.ERR_FIELD_NULL;
             return false;
         }
 
@@ -39,7 +39,7 @@ export class ValidaCampoPorSchema implements ValidatorConstraintInterface {
 
         // tipo
         if (property.type != typeof value) {
-            this.objMessage = MSG.ERR_FIELD_TIPO;
+            this.objMessage = MSG.ERR_FIELD_TYPE;
             return false;
         }
 
@@ -48,13 +48,13 @@ export class ValidaCampoPorSchema implements ValidatorConstraintInterface {
             value = value.toString();
         }
         if (value.length > <number>property.length) {
-            this.objMessage = MSG.ERR_FIELD_TAM;
+            this.objMessage = MSG.ERR_FIELD_LENGTH;
             return false;
         }
 
         // valor padrao
         if (property.default && !(property.default)?.includes(+value)) {
-            this.objMessage = MSG.ERR_FIELD_VALOR;
+            this.objMessage = MSG.ERR_FIELD_VALUE;
             return false;
         }
 
