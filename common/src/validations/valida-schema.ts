@@ -1,9 +1,10 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
+import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface, isDate } from 'class-validator';
 
 import { ApiResponse } from '@libs/common/services/api-response-static';
 import { IConstraintSchema } from '@sd-root/libs/common/src/models/interfaces/ConstraintsSchema';
 import { IMessage, MSG } from '@libs/common/services/api-messages';
+import { fnIsDate } from '../utils';
 
 @ValidatorConstraint({ name: 'ValidaSchema', async: true })
 export class ValidaSchema implements ValidatorConstraintInterface {
@@ -14,31 +15,33 @@ export class ValidaSchema implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         value = value.toString();
 
-        this.validaNulo(value, schema, args);
+        this.validateNullable(value, schema, args);
 
-        this.validaTipo(value, schema, args);
+        this.validateType(value, schema, args);
 
-        this.validaTamanho(value, schema, args);
+        this.validateLength(value, schema, args);
 
-        this.validaValorPadrao(value, schema, args);
+        this.validateDefaultValue(value, schema, args);
 
-        this.validaExpressaoRegular(value, schema, args);
+        this.validateRegularExpression(value, schema, args);
+
+        this.validateDate(value, schema, args);
 
         return true;
 
     }
 
-    validaNulo(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    validateNullable(value: string, schema: IConstraintSchema, args: ValidationArguments) {
         if ((!value) && !schema.nullable)
             this.message(MSG.ERR_FIELD_N_INFO, args);
     }
 
-    validaTipo(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    validateType(value: string, schema: IConstraintSchema, args: ValidationArguments) {
         if (schema.type && schema.type !== typeof value)
             this.message(MSG.ERR_FIELD_TIPO, args);
     }
 
-    validaTamanho(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    validateLength(value: string, schema: IConstraintSchema, args: ValidationArguments) {
 
         if (minLength(value, schema) || maxLength(value, schema) || orLength(value, schema))
             this.message(MSG.ERR_FIELD_TAM, args);
@@ -59,17 +62,22 @@ export class ValidaSchema implements ValidatorConstraintInterface {
         }
     }
 
-    validaValorPadrao(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    validateDefaultValue(value: string, schema: IConstraintSchema, args: ValidationArguments) {
         if (schema.default && !(<Array<any>>schema.default)?.includes(value))
             this.message(MSG.ERR_FIELD_VALOR, args);
     }
 
-    validaExpressaoRegular(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    validateRegularExpression(value: string, schema: IConstraintSchema, args: ValidationArguments) {
         const rgx = <RegExp><unknown>schema.regex;
         if (rgx && !rgx.test(value)) {
             (<IConstraintSchema>args.constraints[0]).regex = `/${rgx.source}/${rgx.flags}`;
             this.message(MSG.ERR_FIELD_VALOR, args);
         }
+    }
+
+    validateDate(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+        if (schema.type === 'Date')
+            if (fnIsDate(value)) this.message(MSG.ERR_FIELD_TIPO, args);
     }
 
     message(objMessage: IMessage, args: ValidationArguments) {

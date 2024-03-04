@@ -9,24 +9,20 @@ export class AuditEntity {
 
     constructor(entrada?: AuditEntity) {
         if (entrada) {
-          Object.keys(entrada).forEach((property) => {
-            if (isDate(this[property])) {
-              this[property] = formatDate(this[property])
-            } else {
-              this[property] = entrada[property]
-            }
-          })
+            Object.keys(entrada).forEach((property) => {
+                if (isDate(this[property])) {
+                    this[property] = formatDate(this[property]);
+                } else {
+                    this[property] = entrada[property];
+                }
+            });
         }
     }
 
     @Column("clob", { name: "TXT_SQL", nullable: true })
     txtSql: string | null;
 
-    @Column("varchar", {
-        name: "TXT_ENDERECO_NOME",
-        nullable: true,
-        length: 255,
-    })
+    @Column("varchar", { name: "TXT_ENDERECO_NOME", nullable: true, length: 255, })
     txtEnderecoNome: string | null;
 
     @Column("varchar", { name: "TXT_ENDERECO_IP", nullable: true, length: 28 })
@@ -44,12 +40,7 @@ export class AuditEntity {
     @Column("number", { name: "COD_ORIGEM", nullable: true, scale: 0 })
     codOrigem: number | null;
 
-    @Column("number", {
-        name: "COD_ORGAO",
-        precision: 10,
-        scale: 0,
-        default: () => "0",
-    })
+    @Column("number", { name: "COD_ORGAO", precision: 10, scale: 0, default: () => "0", })
     codOrgao: number;
 
     // TODO: remover config de PK desta propriedade

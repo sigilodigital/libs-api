@@ -1,5 +1,5 @@
 export interface IConstraintSchema {
-    type?: 'number'|'string'|'boolean'|'object'|'function'|'undefined';
+    type?: 'number'|'string'|'boolean'|'object'|'function'|'undefined'|'Date';
     length?: number;
     minLength?: number;
     maxLength?: number;
