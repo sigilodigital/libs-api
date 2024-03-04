@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 
-import { IdEntityAbstractClass } from "../id-entity-class.entity";
+import { IdEntityAbstractClass } from "../../classes/entity-abstract.class";
 import { ContatoEntity } from "./contato.entity";
 
 @Entity({ name: 'TBL_CONTATO_ENDERECO' })

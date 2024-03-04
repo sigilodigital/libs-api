@@ -2,7 +2,7 @@ import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-clas
 import { Entity, OneToMany, OneToOne } from "typeorm";
 
 import { UsuarioEntity } from "@sd-root/src/features/usuario/models/entities/usuario.entity";
-import { IdEntityAbstractClass } from "../id-entity-class.entity";
+import { IdEntityAbstractClass } from "../../classes/entity-abstract.class";
 import { EmailEntity } from "./email.entity";
 import { EnderecoEntity } from "./endereco.entity";
 import { TelefoneEntity } from "./telefone.entity";

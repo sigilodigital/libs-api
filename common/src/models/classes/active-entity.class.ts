@@ -1,6 +1,6 @@
 import { Column } from "typeorm";
 
-export abstract class IdEntityAbstractClass {
+export abstract class ActiveEntityAbstractClass {
 
     @Column('uuid', { generated: 'uuid', primary: true })
     id?: string;
