@@ -17,7 +17,8 @@ export default () => ({
         apiDadosGerais: env.API_DADOS_GERAIS,
         apiGestaoAcesso: env.API_GESTAO_ACESSO
     },
-    enviroment: {
+    environment: {
         isDebugMode: JSON.parse(env.SRV_DEBUG_MODE),
+        appEnv: env.APP_ENV,
     }
 });  

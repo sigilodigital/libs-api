@@ -7,6 +7,6 @@ export class GlobalService {
     static agent: 'swagger'|'app'|null = 'app';
 
     static debugModeVerify(isOk: boolean = false): boolean {
-        return isOk || (GlobalService.enableDebugModeInHeader && configs().enviroment.isDebugMode);
+        return isOk || (GlobalService.enableDebugModeInHeader && configs().environment.isDebugMode);
     }
 }

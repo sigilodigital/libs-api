@@ -27,6 +27,7 @@ const envSchema = z.object({
     API_CONFIG_GERAIS: z.string(),
 
     NEST_DEBUG: z.string().trim().regex(/(true|false|0|1)/),
+    APP_ENV: z.string().trim().regex(/(production|staging|development|test)/),
 });
 
 export const env = envSchema.parse(process.env)
