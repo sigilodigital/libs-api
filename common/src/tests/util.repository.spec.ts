@@ -1,18 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { SDExpectJest } from '@libs/common/tests/expects-jest';
+import { QUERY_RUNNER_PROVIDER } from '@sd-root/libs/common/src/providers/query-runner.provider';
+import { UsuarioConsultarInputDto, UsuarioConsultarOutputDto } from '@sd-root/src/features/usuario/models/dto/usuario-consultar.dto';
+import { DataAccessEntity } from '@sd-root/src/features/usuario/models/entities/data-access.entity';
+import { LoginInfoEntity } from '@sd-root/src/features/usuario/models/entities/login-info.entity';
+import { ProfileEntity } from '@sd-root/src/features/usuario/models/entities/profile.entity';
+import { UsuarioEntity } from '@sd-root/src/features/usuario/models/entities/usuario.entity';
 import { LoginUserInputDto } from 'src/core/auth/models/dto/login-user.dto';
 import { EmailEntity } from '../../../../libs/common/src/models/entities/contato/email.entity';
-import { QUERY_RUNNER_PROVIDER } from '@sd-root/libs/common/src/providers/query-runner.provider';
-import { UtilRepository } from '..';
-import { UsuarioConsultarInputDto, UsuarioConsultarOutputDto } from '@sd-root/src/features/usuario/models/dto/usuario-consultar.dto';
-import { UsuarioEntity } from '@sd-root/src/features/usuario/models/entities/usuario.entity';
-import { DataAccessEntity } from '@sd-root/src/features/usuario/models/entities/data-access.entity';
-import { TelefoneEntity } from '../models/entities/contato/telefone.entity';
-import { LoginInfoEntity } from '@sd-root/src/features/usuario/models/entities/login-info.entity';
-import { EnderecoEntity } from '../models/entities/contato/endereco.entity';
 import { ContatoEntity } from '../models/entities/contato/contato.entity';
-import { ProfileEntity } from '@sd-root/src/features/usuario/models/entities/profile.entity';
+import { EnderecoEntity } from '../models/entities/contato/endereco.entity';
+import { TelefoneEntity } from '../models/entities/contato/telefone.entity';
+import { UtilRepository } from '../repository/util.repository';
 
 const entities = [
     UsuarioEntity, ContatoEntity, EmailEntity, TelefoneEntity, EnderecoEntity,

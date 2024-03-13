@@ -29,7 +29,7 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
             this.queryDataSource = <QueryRunner>config;
             return this.queryDataSource;
         }
-        
+
         // se ja tiver sido inicializado (com init) >> retorna QueryRunner ou DataSource
         if (this.queryDataSource) return this.queryDataSource;
         // se ja tiver sido inicializado (com new) >> retorna QueryRunner ou DataSource
@@ -37,16 +37,17 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
             this.queryDataSource = <QueryRunner>this.config;
             return this.queryDataSource;
         }
-        
+
         // se chegar como array vazio
         if (config.length === 0) {
-            throw new BadGatewayException('ERRO: entityList não pode chegar neste estágio como array vazio.')
+            throw new BadGatewayException('ERRO: entityList não pode chegar neste estágio como array vazio.');
         }
 
-        const dbConfigOptions:DbConfigOptionsType = {
-            entityList: config
-        }
-        
+        const dbConfigOptions: DbConfigOptionsType = {
+            entityList: config,
+            subscriberList: []
+        };
+
         // retorna um DataSource
         this.queryDataSource = await AppDataSourceAsync.init(dbConfigOptions);
         return this.queryDataSource;

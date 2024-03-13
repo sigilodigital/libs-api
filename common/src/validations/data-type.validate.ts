@@ -21,6 +21,7 @@ export class DataTypeValidate implements ValidatorConstraintInterface {
 
     static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
 
+        if(['true', 'false'].includes(value)) value = JSON.parse(value)
         if (schema.type && schema.type !== typeof value)
             MessageValidate.exec(MSG.ERR_FIELD_TYPE, args, { className: DataTypeValidate.LOG_CLASS_NAME });
     }
