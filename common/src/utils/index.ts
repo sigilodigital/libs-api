@@ -22,6 +22,12 @@ export function fnRemoveNull(obj: unknown): Object {
     return newObj;
 }
 
+export function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 export function fnIsDate(date: any): boolean {
     const result = isDate(date); return result;
     return date && Object.prototype.toString.call(date) === "[object Date]" && date instanceof Date;
