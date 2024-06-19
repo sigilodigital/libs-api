@@ -88,11 +88,11 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
         if (pkProperty)
             entityList[pkProperty] = await this.getSequence(dbSequenceName, dbSchema);
 
-        try {
+        // try {
             const result = await this.queryDataSource.manager.save(entityClass || <EntityTarget<F>>this.entityClass, entityList);
             return result;
-        } catch (error) {
-            return error;
+        // } catch (error) {
+        //     return error;
             // (this.queryDataSource instanceof DataSource)
             //     ? undefined
             //     : RunnerTransaction.rollbackTransaction(this.queryDataSource);
@@ -111,7 +111,7 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
             //         }
             //     }
             // }));
-        }
+        // }
     }
 
     async update<F>(criteria?: Partial<F>, partialEntity?: QueryDeepPartialEntity<F>, entityClass?: EntityTarget<F>): Promise<UpdateResult> {

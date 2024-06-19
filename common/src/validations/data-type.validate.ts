@@ -11,7 +11,7 @@ export class DataTypeValidate implements ValidatorConstraintInterface {
     async validate(value: string, args: ValidationArguments) {
 
         const schema = <IConstraintSchema>args.constraints[0];
-        value = value.toString();
+        // value = value.toString();
 
         DataTypeValidate.exec(value, schema, args);
 
@@ -21,7 +21,7 @@ export class DataTypeValidate implements ValidatorConstraintInterface {
 
     static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
 
-        if(['true', 'false'].includes(value)) value = JSON.parse(value)
+        if(value && ['true', 'false'].includes(value)) value = JSON.parse(value)
         if (schema.type && schema.type !== typeof value)
             MessageValidate.exec(MSG.ERR_FIELD_TYPE, args, { className: DataTypeValidate.LOG_CLASS_NAME });
     }

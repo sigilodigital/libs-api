@@ -34,8 +34,9 @@
     "typeorm-model-generator": "^0.4.6"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
+    "@playwright/test": "^1.44.1",
     "dpdm": "^3.14.0",
-    "madge": "^6.1.0"
+    "madge": "^6.1.0",
+    "npm-check-updates": "^16.14.20"
   }
 }

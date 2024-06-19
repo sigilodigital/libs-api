@@ -19,7 +19,7 @@ export class ValidaSchema implements ValidatorConstraintInterface {
     async validate(value: string, args: ValidationArguments) {
 
         const schema = <IConstraintSchema>args.constraints[0];
-        value = value.toString();
+        // value = value?.toString();
 
         DataNullableValidate.exec(value, schema, args);
         DataTypeValidate.exec(value, schema, args);
