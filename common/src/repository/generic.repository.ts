@@ -11,7 +11,7 @@ import { DbConfigOptionsType } from "../databases/db-pg-piloto.config";
 export abstract class GenericRepository<E> implements IGenericRepository<E> {
     protected LOG_CLASS_NAME = 'GenericRepository';
 
-    protected queryDataSource: QueryRunner | DataSource;
+    public queryDataSource: QueryRunner | DataSource;
     protected config: EntityClassOrSchema[] | QueryRunner = [];
     protected entityClass: EntityTarget<E>;
     protected apiResponse: ApiResponse;
@@ -56,6 +56,12 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
     async close(): Promise<void> {
         if (this.queryDataSource instanceof DataSource)
             await this.queryDataSource.destroy();
+    }
+
+    async manager(){
+        await this.init(this.config);
+        const result = this.queryDataSource.manager
+        return result;
     }
 
     async find<E>(partialEntity: FindManyOptions<E>, entityClass?: EntityTarget<E>): Promise<E[]> {
