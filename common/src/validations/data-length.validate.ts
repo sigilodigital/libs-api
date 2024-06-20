@@ -14,13 +14,13 @@ export class DataLengthValidate implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         value = value.toString();
 
-        DataLengthValidate.exec(value, schema, args);
+        DataLengthValidate.exec(value, args, schema);
 
         return true;
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         if (minLength(value, schema) || maxLength(value, schema) || orLength(value, schema))
             MessageValidate.exec(MSG.ERR_FIELD_LENGTH, args, { className: DataLengthValidate.LOG_CLASS_NAME });

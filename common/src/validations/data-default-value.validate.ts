@@ -13,13 +13,13 @@ export class DataDefaulValueValidate implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         value = value.toString();
 
-        DataDefaulValueValidate.exec(value, schema, args);
+        DataDefaulValueValidate.exec(value, args, schema);
 
         return true;
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         if (schema.default && !(<Array<any>>schema.default)?.includes(value))
             MessageValidate.exec(MSG.ERR_FIELD_VALUE, args, { className: DataDefaulValueValidate.LOG_CLASS_NAME });

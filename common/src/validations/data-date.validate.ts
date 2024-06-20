@@ -14,13 +14,13 @@ export class DataDateValidate implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         value = value.toString();
 
-        DataDateValidate.exec(value, schema, args);
+        DataDateValidate.exec(value, args, schema);
 
         return true;
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         if (schema.type === 'Date')
             if (fnIsDate(value)) MessageValidate.exec(MSG.ERR_FIELD_TYPE, args, { className: DataDateValidate.LOG_CLASS_NAME });

@@ -21,12 +21,12 @@ export class ValidaSchema implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         // value = value?.toString();
 
-        DataNullableValidate.exec(value, schema, args);
-        DataTypeValidate.exec(value, schema, args);
-        DataLengthValidate.exec(value, schema, args);
-        DataDefaulValueValidate.exec(value, schema, args);
-        DataRegularExpressionValidate.exec(value, schema, args);
-        DataDateValidate.exec(value, schema, args);
+        DataNullableValidate.exec(value, args, schema);
+        DataTypeValidate.exec(value, args, schema);
+        DataLengthValidate.exec(value, args, schema);
+        DataDefaulValueValidate.exec(value, args, schema);
+        DataRegularExpressionValidate.exec(value, args, schema);
+        DataDateValidate.exec(value, args, schema);
 
         return true;
     }

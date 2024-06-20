@@ -11,19 +11,25 @@ export class DataRegularExpressionValidate implements ValidatorConstraintInterfa
     async validate(value: string, args: ValidationArguments) {
 
         const schema = <IConstraintSchema>args.constraints[0];
-        value = value.toString();
+        // value = value.toString();
 
-        DataRegularExpressionValidate.exec(value, schema, args);
+        DataRegularExpressionValidate.exec(value, args, schema);
 
         return true;
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         const rgx = <RegExp><unknown>schema.regex;
+        // let rgx: RegExp
+        // if ('string' == typeof schema.regex)
+        //     const reg = /^\/[^\/]/.test(schema.regex)
+        //     rgx = new RegExp(schema.regex)
+        // else rgx = schema.regex;
+
         if (rgx && !rgx.test(value)) {
-            (<IConstraintSchema>args.constraints[0]).regex = `/${rgx.source}/${rgx.flags}`;
+            (<IConstraintSchema>args.constraints[0]).regex = new RegExp(`${rgx.source}`, `${rgx.flags}`);
             MessageValidate.exec(MSG.ERR_FIELD_VALUE, args, { className: DataRegularExpressionValidate.LOG_CLASS_NAME });
         }
     }

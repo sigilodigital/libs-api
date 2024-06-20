@@ -13,13 +13,13 @@ export class DataNullableValidate implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         value = value.toString();
 
-        DataNullableValidate.exec(value, schema, args);
+        DataNullableValidate.exec(value, args, schema);
 
         return true;
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         if ((!value) && !schema.nullable)
             MessageValidate.exec(MSG.ERR_FIELD_NULL, args, { className: DataNullableValidate.LOG_CLASS_NAME });

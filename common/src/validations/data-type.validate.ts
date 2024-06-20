@@ -13,13 +13,13 @@ export class DataTypeValidate implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         // value = value.toString();
 
-        DataTypeValidate.exec(value, schema, args);
+        DataTypeValidate.exec(value, args, schema);
 
         return true;
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         if(value && ['true', 'false'].includes(value)) value = JSON.parse(value)
         if (schema.type && schema.type !== typeof value)

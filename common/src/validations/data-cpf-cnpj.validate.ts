@@ -16,7 +16,7 @@ export class DataCpfCnpjValidate implements ValidatorConstraintInterface {
         const schema = <IConstraintSchema>args.constraints[0];
         value = value.toString();
 
-        DataCpfCnpjValidate.exec(value, schema, args);
+        DataCpfCnpjValidate.exec(value, args, schema);
 
         return true;
 
