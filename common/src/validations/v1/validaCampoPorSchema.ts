@@ -2,7 +2,7 @@ import { HttpStatus } from '@nestjs/common';
 import { IMessage, MSG } from '@libs/common/services/api-messages';
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 import { ExceptionHttpService } from '@sd-root/libs/common/src/services/v1/exception-http.service';
-import { Schemas } from 'src/shared/schemas/schemas';
+import { Schemas } from '../../schemas/schemas';
 
 
 @ValidatorConstraint({ name: 'ValidaCampoPorSchema', async: true })

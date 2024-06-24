@@ -1,7 +1,7 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
+import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit.subscriber";
 import { DataSourceOptions } from "typeorm";
 
-import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit-log.subscriber";
 
 export default function dbOrclProtonConfig(entityList: EntityClassOrSchema[] = []): DataSourceOptions {
     return {

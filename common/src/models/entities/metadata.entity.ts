@@ -1,8 +1,9 @@
 import { UsuarioEntity } from "src/features/usuario/models/entities/usuario.entity";
 import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
+import { IdEntityAbstractClass } from "../classes/entity-abstract.class";
 
 @Entity({ name: 'TBL_METADATA' })
-export class MetadataEntity extends EntityClass  {
+export class MetadataEntity extends IdEntityAbstractClass  {
 
     @OneToOne(type => UsuarioEntity)
     @JoinColumn({name: '_owner'})

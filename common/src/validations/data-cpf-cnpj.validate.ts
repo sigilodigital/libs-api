@@ -22,7 +22,7 @@ export class DataCpfCnpjValidate implements ValidatorConstraintInterface {
 
     }
 
-    static exec(value: string, schema: IConstraintSchema, args: ValidationArguments) {
+    static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
         value = value.toString().replace(/[^0-9]/g, '');
 
