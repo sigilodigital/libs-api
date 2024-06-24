@@ -9,7 +9,11 @@ export class AppDataSourceAsync {
         // dbConfigOptions.dbOption = (dbConfigOptions.dbOption) ? dbConfigOptions.dbOption : 'pg_piloto_default';
         const dataSource = new DataSource(dbConfig(dbConfigOptions));
 
-        await dataSource.initialize();
+        try {
+            await dataSource.initialize();
+        } catch (error) {
+            console.error("Error during Data Source initialization", error);
+        }
         // .then(() => {
         //     console.info("Data Source has been initialized! " + dbConfigOptions.entityList.length);
         // })
