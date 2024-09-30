@@ -7,28 +7,28 @@ import { ContatoEntity } from "./contato.entity";
 export class EnderecoEntity extends IdEntityAbstractClass {
 
     @Column({ name: 'zipCode' })
-    zipCode: number;
+    zipCode?: number;
 
     @Column()
-    country: string;
+    country?: string;
 
     @Column()
-    state: string;
+    state?: string;
 
     @Column()
-    city: string;
+    city?: string;
 
     @Column()
-    place: string;
+    place?: string;
 
     @Column()
-    complement: string;
+    complement?: string;
 
     @Column()
-    number: string;
+    number?: string;
 
     @Column({ nullable: true })
-    description: string | null;
+    description?: string | null;
 
     @ManyToOne(type => ContatoEntity, e => e._enderecoList)
     @JoinColumn()

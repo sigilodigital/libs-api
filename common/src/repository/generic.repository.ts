@@ -7,6 +7,8 @@ import { ApiResponse } from "@libs/common/services/api-response";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
 import { DbConfigOptionsType } from "../databases/db-pg-piloto.config";
 
+export type EntityClassOrSchema_QueryRunner = EntityClassOrSchema[] | QueryRunner;
+
 @Injectable()
 export abstract class GenericRepository<E> implements IGenericRepository<E> {
     protected LOG_CLASS_NAME = 'GenericRepository';
@@ -16,7 +18,7 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
     protected entityClass: EntityTarget<E>;
     protected apiResponse: ApiResponse;
 
-    constructor(entityClass: EntityTarget<E>, config?: EntityClassOrSchema[] | QueryRunner) {
+    constructor(entityClass: EntityTarget<E>, config?: EntityClassOrSchema_QueryRunner) {
         this.config = config || [];
         //se entityClass eh especialista || senao eh util
         this.entityClass = (entityClass) ? entityClass : this.entityClass;
