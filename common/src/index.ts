@@ -6,3 +6,5 @@ export * from './common.service';
 // export * from './repository/util.repository'
 export * from './databases/runner-transaction/runner-transaction'
 export * from './databases/'
+
+export * as _orm from 'typeorm'
