@@ -1,6 +1,6 @@
 import { BadGatewayException, Injectable } from "@nestjs/common";
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
-import { DataSource, EntityTarget, FindManyOptions, FindOptionsWhere, QueryRunner, UpdateResult } from "typeorm";
+import { DataSource, DeleteResult, EntityTarget, FindManyOptions, FindOptionsWhere, QueryRunner, UpdateResult } from "typeorm";
 
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { ApiResponse } from "@libs/common/services/api-response";
@@ -130,6 +130,12 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
         return result;
     }
 
+    async delete<F>(criteria?: Partial<F>, entityClass?: EntityTarget<F>): Promise<DeleteResult> {
+        await this.init(this.config);
+        const result = await this.queryDataSource.manager.delete(entityClass || <EntityTarget<F>>this.entityClass, criteria);
+        return result;
+    }
+
     async query<E>(sql: string): Promise<E> {
         await this.init(this.config);
         return this.queryDataSource.manager.query(sql);
@@ -153,6 +159,7 @@ export interface IGenericRepository<E> {
     save(entity: E[], pkProperty?: string, dbSequenceName?: string): Promise<E[]>;
     // update<F>(criteria: Partial<F>, entity: QueryDeepPartialEntity<F>, entityClass?: EntityTarget<F>): Promise<F>;
     update(criteria: Partial<E>, entity: QueryDeepPartialEntity<E>, entityClass?: EntityTarget<E>): Promise<UpdateResult>;
+    delete(criteria: Partial<E>, entityClass?: EntityTarget<E>): Promise<DeleteResult>;
     query(sql: string): Promise<E>;
     getSequence(dbSequenceName: string, dbScheme?: string): Promise<number>;
 }
