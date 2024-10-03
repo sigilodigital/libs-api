@@ -7,7 +7,7 @@
  * outputError?: object criar objeto com {acao: "ação necessária para mitigar resolução do erro"}
  */
 
-import { MensagenEnum } from "@sd-root/src/shared/enum/mensagens.enum";
+import { MensagenEnum } from "../../models/enumerations/mensagens.enum";
 import { GlobalService } from "../global.service";
 
 export class ApiResponse {

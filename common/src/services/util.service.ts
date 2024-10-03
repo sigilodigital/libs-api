@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { JwtService, JwtVerifyOptions } from "@nestjs/jwt";
 import { compare, hash } from "bcrypt";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 @Injectable()
 export class UtilService implements IUtilService {

@@ -1,15 +1,15 @@
 import { isDate } from "class-validator";
-// import { cnpj, cpf } from 'cpf-cnpj-validator';
+import { cnpj, cpf } from 'cpf-cnpj-validator';
 
 import { TipoFormatoDataEnum } from "../models/enumerations/tipo-formato-data.enum";
 
-// export function validaCPF(valor: string): boolean {
-//     return cpf.isValid(valor);
-// }
+export function validaCPF(valor: string): boolean {
+    return cpf.isValid(valor);
+}
 
-// export function validaCNPJ(valor: string): boolean {
-//     return cnpj.isValid(valor);
-// }
+export function validaCNPJ(valor: string): boolean {
+    return cnpj.isValid(valor);
+}
 export async function somenteNumeros(entrada: string): Promise<boolean> {
     return !!entrada?.match(/^\d+$/);
 }
