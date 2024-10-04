@@ -1,12 +1,12 @@
 import { IUtilRepository, UtilRepository } from "@libs/common/repository/util.repository";
-import { IAuditoriaIncluirDto } from "../models/dto/audit-incluir.dto";
+import { IAuditoriaInserirDto } from "../models/dto/audit-inserir.dto";
 import { AuditEntity } from "../models/entities/audit.entity";
 
 
-export class AuditoriaIncluirUseCase {
+export class AuditoriaInserirUseCase {
     constructor(private utilRepository: IUtilRepository) {}
 
-    public async handle(input: IAuditoriaIncluirDto['input']) {
+    public async handle(input: IAuditoriaInserirDto['input']) {
         //TODO: remover "as *Entity" do objeto; verificar os campos obrigatórios da entidade
         const entity = new AuditEntity({...input} as AuditEntity);
         const auditoriaRepository = await this.utilRepository.init([AuditEntity]);

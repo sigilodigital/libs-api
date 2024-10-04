@@ -1,4 +1,4 @@
-export class AuditoriaIncluirInputDto implements AuditoriaIncluirInputType {
+export class AuditoriaInserirInputDto implements AuditoriaInserirInputType {
     codChave: number;
     codAcao: number;
     codInteressado: number;
@@ -11,9 +11,9 @@ export class AuditoriaIncluirInputDto implements AuditoriaIncluirInputType {
     txtAlteracao: string;
 }
 
-export type AuditoriaIncluirInputType = IAuditoriaIncluirDto['input'];
+export type AuditoriaInserirInputType = IAuditoriaInserirDto['input'];
 
-export interface IAuditoriaIncluirDto {
+export interface IAuditoriaInserirDto {
     input: {
         codChave: number;
         codAcao: number;

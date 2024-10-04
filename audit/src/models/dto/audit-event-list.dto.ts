@@ -1,7 +1,7 @@
 import { AuditEntity as AuditEntity } from "../entities/audit.entity";
 
 export interface ITipoAcao {
-    tipoAcao: "INCLUIR" | "ALTERAR" | "EXCLUIR";
+    tipoAcao: "INSERIR" | "ATUALIZAR" | "REMOVER";
     codAcao: number;
 }
 

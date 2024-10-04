@@ -12,7 +12,7 @@ import { UtilRepository } from "@sd-root/libs/common/src/repository/util.reposit
 import { MSG } from "@sd-root/libs/common/src/services/api-messages";
 import { ApiResponse } from "@sd-root/libs/common/src/services/api-response-static";
 import { AuditEntity } from "../models/entities/audit.entity";
-import { AuditoriaIncluirEventListUseCase } from "../usecases/audit-incluir-event-list.usecase";
+import { AuditoriaInserirEventListUseCase } from "../usecases/audit-inserir-event-list.usecase";
 
 export type RegistroAlteracaoType = Array<{ property: string, original: string, alterado: string; }>;
 export type RegistroEventType = Array<{ insert?: InsertEvent<any>, update?: UpdateEvent<any>, delete?: RemoveEvent<any>; }>[0];
@@ -69,8 +69,8 @@ export class AuditLogSubscriber implements EntitySubscriberInterface {
 
     async beforeTransactionCommit(event: TransactionCommitEvent): Promise<void | Promise<any>> {
         if (event.queryRunner.isTransactionActive) {
-            const auditoriaIncluirEventListUseCase = new AuditoriaIncluirEventListUseCase();
-            await auditoriaIncluirEventListUseCase.handler(this.auditoriaEventListDto.get());
+            const auditoriaInserirEventListUseCase = new AuditoriaInserirEventListUseCase();
+            await auditoriaInserirEventListUseCase.handler(this.auditoriaEventListDto.get());
             this.auditoriaEventListDto.resetEvents();
         }
     }

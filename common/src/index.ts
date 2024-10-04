@@ -8,3 +8,5 @@ export * from './databases/runner-transaction/runner-transaction'
 export * from './databases/'
 
 export * as _orm from 'typeorm'
+export * as _cv from 'class-validator'
+export * as _swagger from '@nestjs/swagger'
