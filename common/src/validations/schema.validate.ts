@@ -11,16 +11,27 @@ import { DataLengthValidate } from './data-length.validate';
 import { DataDefaulValueValidate } from './data-default-value.validate';
 import { DataRegularExpressionValidate } from './data-regular-expression.validate';
 import { DataDateValidate } from './data-date.validate';
+import { DataRequiredValidate } from './data-required.validate';
 
 @ValidatorConstraint({ name: 'ValidaSchema', async: true })
 export class ValidaSchema implements ValidatorConstraintInterface {
     static readonly LOG_CLASS_NAME = "ValidaSchema";
 
     async validate(value: string, args: ValidationArguments) {
-
-        const schema = <IConstraintSchema>args.constraints[0];
+        let schema: IConstraintSchema;
+        try {
+            schema = <IConstraintSchema>args.constraints[0];
+        } catch (err) {
+            console.error("Erro ao consumir schema: ", err);
+            schema = <IConstraintSchema>{};
+        }
         // value = value?.toString();
 
+        schema.type ??= 'string';
+        schema.required ??= true;
+        schema.nullable ??= false;
+
+        DataRequiredValidate.exec(value, args, schema);
         DataNullableValidate.exec(value, args, schema);
         DataTypeValidate.exec(value, args, schema);
         DataLengthValidate.exec(value, args, schema);
