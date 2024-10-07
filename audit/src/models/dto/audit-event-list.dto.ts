@@ -16,8 +16,8 @@ export interface IAuditDadosPrimarios {
     codOrigem: number; // codigo do cliente que partiu a ação
     codAcao: number; // codigo da ação solicitada
     userId: string, // id de quem executou a ação
-    txtEnderecoIp: string; // IP do dispositivo que partiu a ação
-    txtEnderecoNome: string;
+    txtAddressIp: string; // IP do dispositivo que partiu a ação
+    txtAddressNome: string;
 }
 
 export class AuditEventListDto {

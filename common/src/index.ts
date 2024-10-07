@@ -7,6 +7,7 @@ export * from './common.service';
 export * from './databases/runner-transaction/runner-transaction'
 export * from './databases/'
 
-export * as _orm from 'typeorm'
-export * as _cv from 'class-validator'
-export * as _swagger from '@nestjs/swagger'
+// export * as _orm from 'typeorm'
+// export * from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
+// export * as _cv from 'class-validator'
+// export * as _swagger from '@nestjs/swagger'

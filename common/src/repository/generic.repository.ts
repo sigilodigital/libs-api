@@ -60,7 +60,7 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
             await this.queryDataSource.destroy();
     }
 
-    async manager(){
+    async manager() {
         await this.init(this.config);
         const result = this.queryDataSource.manager
         return result;
@@ -97,28 +97,28 @@ export abstract class GenericRepository<E> implements IGenericRepository<E> {
             entityList[pkProperty] = await this.getSequence(dbSequenceName, dbSchema);
 
         // try {
-            const result = await this.queryDataSource.manager.save(entityClass || <EntityTarget<F>>this.entityClass, entityList);
-            return result;
+        const result = await this.queryDataSource.manager.save(entityClass || <EntityTarget<F>>this.entityClass, entityList);
+        return result;
         // } catch (error) {
         //     return error;
-            // (this.queryDataSource instanceof DataSource)
-            //     ? undefined
-            //     : RunnerTransaction.rollbackTransaction(this.queryDataSource);
-            // throw new BadGatewayException(this.apiResponse.handler({
-            //     objMessage: MSG.DEFAULT_FALHA,
-            //     error: {
-            //         message: 'Erro ao tentar persistir dados no DB.',
-            //         fix: ''
-            //             + '(1) conferir a conexão com o DB'
-            //             + '(2) conferir as configurações da conexão com o DB',
-            //         context: {
-            //             className: this.LOG_CLASS_NAME,
-            //             methodName: this.save.name,
-            //             input: entityList,
-            //             output: error
-            //         }
-            //     }
-            // }));
+        // (this.queryDataSource instanceof DataSource)
+        //     ? undefined
+        //     : RunnerTransaction.rollbackTransaction(this.queryDataSource);
+        // throw new BadGatewayException(this.apiResponse.handler({
+        //     objMessage: MSG.DEFAULT_FALHA,
+        //     error: {
+        //         message: 'Erro ao tentar persistir dados no DB.',
+        //         fix: ''
+        //             + '(1) conferir a conexão com o DB'
+        //             + '(2) conferir as configurações da conexão com o DB',
+        //         context: {
+        //             className: this.LOG_CLASS_NAME,
+        //             methodName: this.save.name,
+        //             input: entityList,
+        //             output: error
+        //         }
+        //     }
+        // }));
         // }
     }
 

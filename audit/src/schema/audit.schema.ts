@@ -19,8 +19,8 @@ export const AuditoriaSchema = new EntitySchema({
             type: "timestamp",
             nullable: false
         },
-        codUsuario: {
-            name: "COD_USUARIO",
+        codUser: {
+            name: "COD_USER",
             type: Number,
             nullable: true
         },
@@ -29,14 +29,14 @@ export const AuditoriaSchema = new EntitySchema({
             type: "clob",
             nullable: false,
         },
-        txtEnderecoIp: {
-            name: "TXT_ENDERECO_IP",
+        txtAddressIp: {
+            name: "TXT_ADDRESS_IP",
             type: String,
             nullable: false,
             length: 28
         },
-        txtEnderecoNome: {
-            name: "TXT_ENDERECO_NOME",
+        txtAddressNome: {
+            name: "TXT_ADDRESS_NOME",
             type: String,
             nullable: true,
             length: 255

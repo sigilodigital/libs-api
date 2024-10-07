@@ -41,7 +41,7 @@ export class AuditoriaLocalService {
         }
     }
 
-    static async getCodUsuario(req: Request): Promise<string> {
+    static async getCodUser(req: Request): Promise<string> {
         const localService = new AuditoriaLocalService();
         const httpService = new HttpService();
         const headers = new AxiosHeaders({ Authorization: "Bearer " + req.headers['tokenSystem'] });

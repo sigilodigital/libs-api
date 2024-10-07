@@ -1,7 +1,7 @@
 export class AuditoriaConsultarInputDto implements AuditoriaConsultarInputType {
     dtInicial: Date;
     dtFinal: Date;
-    usuarioId: string;
+    userId: string;
     operacaoTipo: string;
 }
 
@@ -11,7 +11,7 @@ export interface IAuditoriaConsultarDto {
     input: {
         dtInicial: Date;
         dtFinal: Date;
-        usuarioId: string;
+        userId: string;
         operacaoTipo: string;
     },
     output: {

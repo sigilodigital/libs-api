@@ -3,10 +3,10 @@ export class AuditoriaInserirInputDto implements AuditoriaInserirInputType {
     codAcao: number;
     codInteressado: number;
     dtAcao: Date;
-    usuarioId: string;
+    userId: string;
     txtSql: string;
-    txtEnderecoIp: string;
-    txtEnderecoNome: string;
+    txtAddressIp: string;
+    txtAddressNome: string;
     codOrigem: number;
     txtAlteracao: string;
 }
@@ -18,10 +18,10 @@ export interface IAuditoriaInserirDto {
         codChave: number;
         codAcao: number;
         dtAcao: Date;
-        usuarioId: string;
+        userId: string;
         txtSql: string;
-        txtEnderecoIp: string;
-        txtEnderecoNome: string;
+        txtAddressIp: string;
+        txtAddressNome: string;
         codOrigem: number;
         txtAlteracao: string;
     },
