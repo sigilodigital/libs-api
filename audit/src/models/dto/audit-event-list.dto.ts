@@ -15,7 +15,7 @@ export interface IAuditDadosSecundarios {
 export interface IAuditDadosPrimarios {
     codOrigem: number; // codigo do cliente que partiu a ação
     codAcao: number; // codigo da ação solicitada
-    usuarioId: string, // id de quem executou a ação
+    userId: string, // id de quem executou a ação
     txtEnderecoIp: string; // IP do dispositivo que partiu a ação
     txtEnderecoNome: string;
 }

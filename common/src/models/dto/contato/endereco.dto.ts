@@ -34,11 +34,11 @@ export class EnderecoInputDto implements EnderecoEntity {
 
     @ApiProperty({ name: 'complement', type: String, nullable: false, description: 'Complemento (Ex: Bloco A, Apto 101)' })
     @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'string', nullable: false }])
-    complement: string;
+    complement?: string;
 
     @ApiProperty({ name: 'description', type: String, nullable: false })
     @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'string', nullable: false }])
-    description: string;
+    description?: string;
 
     @ApiProperty({ name: 'description', type: String, nullable: false })
     @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'string', nullable: false }])
