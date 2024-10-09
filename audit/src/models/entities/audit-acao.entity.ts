@@ -12,22 +12,18 @@ export class AuditoriaAcaoEntity {
     @Column("varchar", { name: "TXT_ACAO", length: 255 })
     txtAcao: string;
 
-    @Column("number", { name: "COD_EXIBE_COMBO" })
+    @Column("integer", { name: "COD_EXIBE_COMBO" })
     codExibeCombo: number;
 
-    @Column("number", {
+    @Column("integer", {
         name: "COD_ATIVO",
-        precision: 1,
-        scale: 0,
         default: () => "1",
     })
     codAtivo: number;
 
-    @Column("number", {
+    @Column("integer", {
         primary: true,
         name: "COD_ACAO",
-        precision: 10,
-        scale: 0,
     })
     codAcao: number;
 

@@ -37,17 +37,17 @@ export class AuditEntity {
     @Column("text", { name: "userId" })
     userId: string;
 
-    @Column("number", { name: "COD_ORIGEM", nullable: true, scale: 0 })
+    @Column("integer", { name: "COD_ORIGEM", nullable: true })
     codOrigem: number | null;
 
-    @Column("number", { name: "COD_ORGAO", precision: 10, scale: 0, default: () => "0", })
+    @Column("integer", { name: "COD_ORGAO", default: () => "0", })
     codOrgao: number;
 
     // TODO: remover config de PK desta propriedade
-    @Column("number", { primary: true, name: "COD_CHAVE", scale: 0 })
+    @Column("integer", { primary: true, name: "COD_CHAVE" })
     codChave: number;
 
-    @Column("number", { name: "COD_ACAO", scale: 0 })
+    @Column("integer", { name: "COD_ACAO" })
     codAcao: number;
 
 }

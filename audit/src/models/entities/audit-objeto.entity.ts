@@ -7,10 +7,10 @@ export class AuditoriaObjetoEntity {
     @Column("varchar", { name: "TXT_OBJETO", length: 50 })
     txtObjeto: string;
 
-    @Column("number", { primary: true, name: "COD_OBJETO" })
+    @Column("integer", { primary: true, name: "COD_OBJETO" })
     codObjeto: number;
 
-    @Column("number", { name: "COD_ATIVO", default: () => "(1)" })
+    @Column("integer", { name: "COD_ATIVO", default: () => "(1)" })
     codAtivo: number;
 
     @ManyToMany(
