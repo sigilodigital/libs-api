@@ -35,15 +35,15 @@ export const MSG = {
     ERR_AUTH_USR_INATIV:  { text: "Usuário inativado.", code: 81 },
     ERR_AUTH_USR_N_AUTENT:  { text: "Usuário não autenticado.", code: 82 },
     ERR_AUTH_USR_SENHA_BLOQUEADA:  { text: "Usuário com senha bloqueada.", code: 83 },
-    ERR_AUTH_USR_N_METODO:  { text: "Usuário não tem acesso ao método solicitado.", code: 84 },
+    ERR_AUTH_USR_N_METHOD:  { text: "Usuário não tem acesso ao método solicitado.", code: 84 },
     ERR_AUTH_USR_ACES_PUB_NEGADO:  { text: "Acesso público negado.", code: 85 },
     // ERROR - AUTH_PROFILE
-    ERR_AUTH_PROFILE_N_METODO:  { text: "Perfil não tem acesso ao método solicitado.", code: 89 },
+    ERR_AUTH_PROFILE_N_METHOD:  { text: "Perfil não tem acesso ao método solicitado.", code: 89 },
     // ERROR - AUTH_SYS
     ERR_AUTH_SYS_N_ENCONT:  { text: "Sistema não encontrado.", code: 90 },
     ERR_AUTH_SYS_INATIV:  { text: "Sistema inativado.", code: 91 },
     ERR_AUTH_SYS_N_AUTENT:  { text: "Sistema não autenticado.", code: 92 },
-    ERR_AUTH_SYS_N_METODO:  { text: "Sistema não tem acesso ao método solicitado.", code: 93 },
+    ERR_AUTH_SYS_N_METHOD:  { text: "Sistema não tem acesso ao método solicitado.", code: 93 },
     // ERROR - FIND
     ERR_FIND_CONSU_EXTERNA:  { text: "Consulta externa não encontrada.", code: 30 },
     ERR_FIND_URL_INVALIDA:  { text: "URL inválida.", code: 31 },
