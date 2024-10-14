@@ -20,7 +20,9 @@ export class ValidaSchema implements ValidatorConstraintInterface {
     async validate(value: string, args: ValidationArguments) {
         let schema: IConstraintSchema;
         try {
-            schema = <IConstraintSchema>args.constraints[0];
+            schema = <IConstraintSchema>((args.constraints?.length > 0)
+                ? args.constraints[0]
+                : {});
         } catch (err) {
             console.error("Erro ao consumir schema: ", err);
             schema = <IConstraintSchema>{};

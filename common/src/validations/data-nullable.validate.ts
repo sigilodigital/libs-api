@@ -11,7 +11,6 @@ export class DataNullableValidate implements ValidatorConstraintInterface {
     async validate(value: string, args: ValidationArguments) {
 
         const schema = <IConstraintSchema>args.constraints[0];
-        value = value.toString();
 
         DataNullableValidate.exec(value, args, schema);
 
@@ -21,7 +20,7 @@ export class DataNullableValidate implements ValidatorConstraintInterface {
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
-        if ((!value?.trim()) && !schema.nullable)
+        if ((!value?.toString().trim()) && !schema.nullable)
             MessageValidate.exec(MSG.ERR_FIELD_NULL, args, { className: DataNullableValidate.LOG_CLASS_NAME });
     }
 }
