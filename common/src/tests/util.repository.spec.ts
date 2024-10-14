@@ -1,11 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { QUERY_RUNNER_PROVIDER } from '@sd-root/libs/common/src/providers/query-runner.provider';
-import { UtilRepository } from '../repository/util.repository';
-import { UserEntity } from '@sd-root/src/core/resources/user/models/entities/user.entity';
 import { LoginUserInputDto } from '@sd-root/src/core/resources/auth/models/dto/login-user.dto';
 import { UserFindInputDto, UserFindOutputDto } from '@sd-root/src/core/resources/user/models/dto/user-find.dto';
-import { EmailEntity } from '@sd-root/src/core/resources/contact/models/entities/email.entity';
+import { UserEntity } from '@sd-root/src/core/resources/user/models/entities/user.entity';
+import { UtilRepository } from '../repository/util.repository';
 
 const entities = UserEntity.getEntityList([]);
 
@@ -21,8 +20,8 @@ describe('UtilRepository', () => {
             ],
         }).compile();
 
-        // repo = module.get<UtilRepository>(UtilRepository);
-        repo = new UtilRepository();
+        repo = module.get<UtilRepository>(UtilRepository);
+        // repo = new UtilRepository();
     });
 
     it('should be defined', () => {
@@ -30,7 +29,7 @@ describe('UtilRepository', () => {
     });
 });
 
-describe('UtilRepository: Testando conexão com DB', () => {
+describe('Testando conexão com DB', () => {
     let repo: UtilRepository;
 
     beforeEach(async () => {
@@ -51,7 +50,7 @@ describe('UtilRepository: Testando conexão com DB', () => {
 
 });
 
-describe('UtilRepository: testando os métodos do repository', () => {
+describe('Testando os métodos do repository', () => {
     let utilRepository: UtilRepository;
 
     jest.setTimeout(120000);
@@ -65,21 +64,8 @@ describe('UtilRepository: testando os métodos do repository', () => {
             }],
         }).compile();
 
-
         utilRepository = module.get<UtilRepository>(UtilRepository);
     });
-
-    // it('getUserList: deve retornar uma lista de usuários ativos', async () => {
-    //     const input: UserFindInputDto = { isActive: true };
-    //     try {
-    //         const result = await utilRepository.find(input, UserEntity);
-
-    //         expect(result).toBeInstanceOf(Array<UserFindOutputDto>);
-    //         expect(result.length).toBeGreaterThanOrEqual(2);
-    //     } catch (error) {
-    //         await SDExpectJest.fnNotCatchError(error, expect);
-    //     }
-    // });
 
     it('find: deve retornar uma lista de usuários', async () => {
         const input: LoginUserInputDto = { username: 'sd', password: '123' };
@@ -91,39 +77,31 @@ describe('UtilRepository: testando os métodos do repository', () => {
     it('find: deve retornar todos os usuários, inclusive os dados das tabelas relacionadas', async () => {
         const input: UserFindInputDto = {};
         const result = await utilRepository.find({
-            where: input,
-            // relations: {
-            //     _loginInfo: true
-            // }
+            where: input, relations: { _person: true, _loginInfo: true }
         }, UserEntity);
 
         expect(result).toBeInstanceOf(Array<UserFindOutputDto>);
         expect(result.length).toBeGreaterThanOrEqual(2);
-        expect(result[0]).toMatchObject({
-            'id': expect.any(String),
-            // '_dataAccess': expect.any(DataAccessEntity),
-            // '_contact': { '_emailList': expect.any(Array<EmailEntity>) },
-            // '_profileList': expect.any(Array<ProfileEntity>),
-        });
+        for (const element of result) {
+            expect(element).toMatchObject({
+                'id': expect.any(String),
+                '_person': expect.any(Object),
+                '_loginInfo': expect.any(Object),
+            });
+        }
     });
 
     it('findOne: deve retornar apenas um usuário e seus relacionamentos', async () => {
         const input: UserFindInputDto = { username: 'abcd' };
         const result = await utilRepository.findOne({
-            where: input, 
-            // relations: {
-            //     // _contact: true,
-            //     // _dataAccess: true,
-            //     _loginInfo: true
-            // }
+            where: input, relations: { _person: true, _loginInfo: true }
         }, UserEntity);
 
         expect(result).toBeInstanceOf(UserEntity);
         expect(result).toMatchObject({
             'id': expect.any(String),
-            // '_dataAccess': expect.any(DataAccessEntity),
-            // '_contact': { '_emailList': expect.any(Array<EmailEntity>) },
-            // '_profileList': expect.any(Array<ProfileEntity>),
+            '_person': expect.any(Object),
+            '_loginInfo': expect.any(Object),
         });
     });
 });
