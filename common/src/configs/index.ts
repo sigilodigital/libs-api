@@ -20,5 +20,13 @@ export default () => ({
     environment: {
         isDebugMode: JSON.parse(env.SRV_DEBUG_MODE),
         appEnv: env.APP_ENV,
+    },
+    db: {
+        host: env.DB_HOST,
+        port: parseInt(env.DB_PORT),
+        database: env.DB_NAME,
+        schema: env.DB_SCHEMA,
+        username: env.DB_USERNAME,
+        password: env.DB_PASSWORD,
     }
 });  

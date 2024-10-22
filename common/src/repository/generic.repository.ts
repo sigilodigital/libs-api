@@ -5,7 +5,7 @@ import { DataSource, DeleteResult, EntityTarget, FindManyOptions, FindOptionsWhe
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { ApiResponse } from "@libs/common/services/api-response";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
-import { DbConfigOptionsType } from "../databases/db-pg-piloto.config";
+import { DbConfigOptionsType } from "../databases/db-facilitary-pg.config";
 
 export type EntityClassOrSchema_QueryRunner = EntityClassOrSchema[] | QueryRunner;
 

@@ -3,7 +3,7 @@ import { QueryRunner } from "typeorm";
 
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { AuditLogSubscriber } from "@sd-root/libs/audit/src/subscriber/audit.subscriber";
-import { DbConfigOptionsType, DbOptionType } from "../db-pg-piloto.config";
+import { DbConfigOptionsType, DbOptionType } from "../db-facilitary-pg.config";
 
 export class RunnerTransaction {
 

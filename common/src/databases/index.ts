@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { DbConfigOptionsType, dbConfig } from "./db-pg-piloto.config";
+import { DbConfigOptionsType, dbConfig } from "./db-facilitary-pg.config";
 
 
 export class AppDataSourceAsync {
@@ -11,6 +11,7 @@ export class AppDataSourceAsync {
 
         try {
             await dataSource.initialize();
+            console.info("Datasource: ", dataSource);
         } catch (error) {
             console.error("Error during Data Source initialization", error);
         }

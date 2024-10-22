@@ -1,7 +1,7 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
-import { DataSourceOptions, MixedList } from "typeorm";
+import { DataSourceOptions } from "typeorm";
 
-import { env } from "./envSchema";
+import configs from "../configs";
 
 export type DbConfigOptionsType = {
     dbOption?: DbOptionType;
@@ -10,32 +10,33 @@ export type DbConfigOptionsType = {
 }
 export type DbConfigType2 = (eL: EntityClassOrSchema[]) => DataSourceOptions;
 export type DbOptionType =
-    | 'pg_facilitary_default'
-    | 'pg_facilitary_default_fixture'
-    | 'pg_facilitary_test';
+    | 'pg_default'
+    | 'pg_fixture'
+    | 'pg_test';
 
 export function dbConfig(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
     switch (dbConfigOption.dbOption) {
-        case 'pg_facilitary_default':
-            return dbConfig_pgFacilitaryDefault(dbConfigOption);
-        case 'pg_facilitary_default_fixture':
-            return dbConfig_pgFacilitaryFixture(dbConfigOption);
-        case 'pg_facilitary_test':
-            return dbConfig_pgFacilitaryTest(dbConfigOption);
+        case 'pg_default':
+            return dbConfig_pg_default(dbConfigOption);
+        case 'pg_fixture':
+            return dbConfig_pg_fixture(dbConfigOption);
+        case 'pg_test':
+            return dbConfig_pg_test(dbConfigOption);
         default:
-            return dbConfig_pgFacilitaryDefault(dbConfigOption);
+            return dbConfig_pg_default(dbConfigOption);
     }
 }
 
 const pgFacilitaryConfig: DataSourceOptions = {
     type: 'postgres',
-    host: env.DB_HOST,
-    port: parseInt(env.DB_PORT),
+    host: configs().db.host,
+    port: configs().db.port,
+    database: configs().db.database,
+    schema: configs().db.schema,
+    username: configs().db.username,
+    password: configs().db.password,
     ssl: false,
-    database: env.DB_NAME,
-    schema: env.DB_SCHEMA,
-    username: env.DB_USERNAME,
-    password: env.DB_PASSWORD,
+    logging: false,
     synchronize: false,
     subscribers: [/*HistoricoSubscriber*/],
     entities: [
@@ -43,29 +44,30 @@ const pgFacilitaryConfig: DataSourceOptions = {
         // '**/entities/*.dto'
     ]
 };
-export function dbConfig_pgFacilitaryDefault(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
+export function dbConfig_pg_default(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
     return {
         ...pgFacilitaryConfig,
-        // host: 'pg_facilitary',
-        subscribers: [...dbConfigOption.subscriberList],
-        entities: [...dbConfigOption.entityList]
+        host: 'facilitary-db-dev',
+        port: 5432,
+        subscribers: dbConfigOption.subscriberList,
+        entities: dbConfigOption.entityList
     } as DataSourceOptions;
 }
-export function dbConfig_pgFacilitaryFixture(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
+export function dbConfig_pg_fixture(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
     return {
         ...pgFacilitaryConfig,
         host: 'localhost',
-        subscribers: [...dbConfigOption.subscriberList],
-        entities: [...dbConfigOption.entityList]
+        port: 7065,
+        subscribers: dbConfigOption.subscriberList,
+        entities: dbConfigOption.entityList
     } as DataSourceOptions;
 }
 
-function dbConfig_pgFacilitaryTest(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
+function dbConfig_pg_test(dbConfigOption: DbConfigOptionsType): DataSourceOptions {
     return {
         ...pgFacilitaryConfig,
-        host: 'localhost',
         schema: 'test',
-        subscribers: [...dbConfigOption.subscriberList],
-        entities: [...dbConfigOption.entityList]
+        subscribers: dbConfigOption.subscriberList,
+        entities: dbConfigOption.entityList
     } as DataSourceOptions;
 }
