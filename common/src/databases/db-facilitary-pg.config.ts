@@ -57,7 +57,7 @@ export function dbConfig_pg_fixture(dbConfigOption: DbConfigOptionsType): DataSo
     return {
         ...pgFacilitaryConfig,
         host: 'localhost',
-        port: 7065,
+        port: 3065,
         subscribers: dbConfigOption.subscriberList,
         entities: dbConfigOption.entityList
     } as DataSourceOptions;
