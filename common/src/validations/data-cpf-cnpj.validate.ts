@@ -1,10 +1,8 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
-import { ApiResponse } from '../services/api-response-static';
-import { IMessage, MSG } from '../services/api-messages';
-import { validaCNPJ, validaCPF } from '../utils';
 import { IConstraintSchema } from '../models/interfaces/ConstraintsSchema';
+import { MSG } from '../services/api-messages';
+import { validaCNPJ, validaCPF } from '../utils';
 import { MessageValidate } from './message.validate';
 
 @ValidatorConstraint({ name: 'DataCpfCnpjValidate', async: true })
@@ -19,7 +17,6 @@ export class DataCpfCnpjValidate implements ValidatorConstraintInterface {
         DataCpfCnpjValidate.exec(value, args, schema);
 
         return true;
-
     }
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {

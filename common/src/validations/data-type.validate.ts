@@ -11,12 +11,10 @@ export class DataTypeValidate implements ValidatorConstraintInterface {
     async validate(value: string, args: ValidationArguments) {
 
         const schema = <IConstraintSchema>args.constraints[0];
-        // value = value.toString();
 
         DataTypeValidate.exec(value, args, schema);
 
         return true;
-
     }
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {

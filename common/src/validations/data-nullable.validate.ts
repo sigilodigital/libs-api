@@ -15,12 +15,11 @@ export class DataNullableValidate implements ValidatorConstraintInterface {
         DataNullableValidate.exec(value, args, schema);
 
         return true;
-
     }
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
 
-        if ((!value?.toString().trim()) && !schema.nullable)
+        if (([null, ''].includes(value?.toString().trim())) && !schema.nullable)
             MessageValidate.exec(MSG.ERR_FIELD_NULL, args, { className: DataNullableValidate.LOG_CLASS_NAME });
     }
 }

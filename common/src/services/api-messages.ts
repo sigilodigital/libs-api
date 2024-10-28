@@ -20,10 +20,11 @@ export const MSG = {
     // ERROR - FIELD VALIDATION
     ERR_FIELD_INVALID:  { text: "Campo inválido.", code: 20 },
     ERR_FIELD_EXTRA:  { text: "Campo @campo não solicitado.", code: 21 },
-    ERR_FIELD_NULL:  { text: "Campo @campo não informado.", code: 22 },
-    ERR_FIELD_TYPE:  { text: "Tipo do campo @campo é inválido.", code: 23 },
-    ERR_FIELD_LENGTH:  { text: "Tamanho do campo @campo é inválido.", code: 24 },
-    ERR_FIELD_VALUE:  { text: "Valor do campo @campo é inválido.", code: 25 },
+    ERR_FIELD_NONE:  { text: "Campo @campo não informado.", code: 22 },
+    ERR_FIELD_NULL:  { text: "Campo @campo não informado.", code: 23 },
+    ERR_FIELD_TYPE:  { text: "Tipo do campo @campo é inválido.", code: 24 },
+    ERR_FIELD_LENGTH:  { text: "Tamanho do campo @campo é inválido.", code: 25 },
+    ERR_FIELD_VALUE:  { text: "Valor do campo @campo é inválido.", code: 26 },
     // ERROR - AUTH
     ERR_AUTH_TOKEN_N_INFORMED:  { text: "Token não informado.", code: 70 },
     ERR_AUTH_TOKEN_INVALID:  { text: "Token inválido.", code: 71 },

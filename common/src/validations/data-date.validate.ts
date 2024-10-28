@@ -17,7 +17,6 @@ export class DataDateValidate implements ValidatorConstraintInterface {
         DataDateValidate.exec(value, args, schema);
 
         return true;
-
     }
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {

@@ -27,7 +27,6 @@ export class ValidaSchema implements ValidatorConstraintInterface {
             console.error("Erro ao consumir schema: ", err);
             schema = <IConstraintSchema>{};
         }
-        // value = value?.toString();
 
         schema.type ??= 'string';
         schema.required ??= true;
@@ -35,6 +34,9 @@ export class ValidaSchema implements ValidatorConstraintInterface {
 
         DataRequiredValidate.exec(value, args, schema);
         DataNullableValidate.exec(value, args, schema);
+        
+        if([undefined, null, ''].includes(value?.toString().trim())) return true;
+
         DataTypeValidate.exec(value, args, schema);
         DataLengthValidate.exec(value, args, schema);
         DataDefaulValueValidate.exec(value, args, schema);

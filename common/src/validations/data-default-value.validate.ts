@@ -4,7 +4,7 @@ import { IConstraintSchema } from '../models/interfaces/ConstraintsSchema';
 import { MSG } from '../services/api-messages';
 import { MessageValidate } from './message.validate';
 
-@ValidatorConstraint({ name: 'DataDefaulValueValidate',async:true})
+@ValidatorConstraint({ name: 'DataDefaulValueValidate', async: true })
 export class DataDefaulValueValidate implements ValidatorConstraintInterface {
     static readonly LOG_CLASS_NAME = "DataDefaulValueValidate";
 
@@ -16,7 +16,6 @@ export class DataDefaulValueValidate implements ValidatorConstraintInterface {
         DataDefaulValueValidate.exec(value, args, schema);
 
         return true;
-
     }
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {

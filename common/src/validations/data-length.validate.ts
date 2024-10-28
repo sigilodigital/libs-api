@@ -4,7 +4,6 @@ import { IConstraintSchema } from '../models/interfaces/ConstraintsSchema';
 import { MSG } from '../services/api-messages';
 import { MessageValidate } from './message.validate';
 
-
 @ValidatorConstraint({ name: 'DataLengthValidate', async: true })
 export class DataLengthValidate implements ValidatorConstraintInterface {
     static readonly LOG_CLASS_NAME = "DataLengthValidate";
@@ -17,7 +16,6 @@ export class DataLengthValidate implements ValidatorConstraintInterface {
         DataLengthValidate.exec(value, args, schema);
 
         return true;
-
     }
 
     static exec(value: string, args: ValidationArguments, schema: IConstraintSchema) {
