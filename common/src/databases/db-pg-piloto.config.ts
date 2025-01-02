@@ -1,7 +1,7 @@
 import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
 import { DataSourceOptions, MixedList } from "typeorm";
 
-import { env } from "./envSchema";
+import { env } from "../configs/envSchema";
 
 export type DbConfigOptionsType = {
     dbOption?: DbOptionType;

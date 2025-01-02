@@ -1,0 +1,15 @@
+Write a commit message for this diff with the following rules:
+Ignore the last_commit_message.md file;
+In the more detailed description, add the file name and then write what was changed or if there were new implementations and deletions;
+Use markdown formatting, but only as requested;
+To identify the title, use heading 2;
+In the file name, use heading 4;
+Record within this json object what is requested in each property (in the count, ignore blank spaces):
+```json
+{
+    linesChanged: number, 
+    linesIncluded: number, 
+    totalChars: number
+}
+```
+Reply only the commit message in...

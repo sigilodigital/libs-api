@@ -1,4 +1,4 @@
-import { env } from "../databases/envSchema";
+import { env } from "./envSchema";
 
 export default () => ({
     auth: {
