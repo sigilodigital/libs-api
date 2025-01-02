@@ -1,6 +1,6 @@
 {
   "name": "libs-api",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
   "main": "index.js",
   "scripts": {
