@@ -7,9 +7,16 @@ export abstract class IdEntityAbstractClass {
 
 }
 
+export abstract class IsActiveEntityAbstractClass {
+
+    @Column("boolean", { name: "isActive", default: true })
+    isActive: boolean;
+
+}
+
 export abstract class EntityAbstractClass extends IdEntityAbstractClass {
 
     @Column("boolean", { name: "isActive", default: true })
-    isActive?: boolean;
+    isActive: boolean;
 
 }

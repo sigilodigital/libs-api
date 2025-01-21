@@ -1,13 +1,32 @@
-## Atualização da versão do projeto
+## Implementação de novas funcionalidades e ajustes em arquivos existentes
+
+#### common/src/externals/class-validator/index.ts
+- Adicionado ponto e vírgula ao final das linhas de exportação
+
+#### common/src/models/classes/entity-abstract.class.ts
+- Criada nova classe abstrata `IsActiveEntityAbstractClass`
+- Alterado o tipo da propriedade `isActive` de opcional para obrigatório na classe `EntityAbstractClass`
+
+#### common/src/models/enumerations/codigo-acao.enum.ts
+- Renomeados alguns enums:
+  - `SERVICO_*` para `ORDER_*`
+  - `ORCAMENTO_*` para `BUDGET_*`
+
+#### common/src/repository/generic.repository.ts
+- Atualizado o caminho de importação para `EntityClassOrSchema` e outras entidades do TypeORM
 
 #### package.json
-- Versão do projeto atualizada de 1.4.2 para 1.5.0
+- Movidas dependências `supertest` e `typeorm-model-generator` para `devDependencies`
+- Removida dependência `typeorm-model-generator` das dependências principais
 
 ```json
 {
-  "linesChanged": 2,
-  "linesIncluded": 1,
-  "totalChars": 40
+  "changedLines": 30,
+  "includedLines": 9,
+  "totalChars": 1214,
+  "changedFiles": 5,
+  "newFiles": 2,
+  "deletedfiles": 0
 }
 ```
 

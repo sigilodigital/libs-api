@@ -1,6 +1,6 @@
 import { BadGatewayException, Injectable } from "@nestjs/common";
-import { EntityClassOrSchema } from "@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type";
-import { DataSource, DeleteResult, EntityTarget, FindManyOptions, FindOptionsWhere, QueryRunner, UpdateResult } from "typeorm";
+import { EntityClassOrSchema } from "@libs/common/externals/typeorm";
+import { DataSource, DeleteResult, EntityTarget, FindManyOptions, FindOptionsWhere, QueryRunner, UpdateResult } from "@libs/common/externals/typeorm";
 
 import { AppDataSourceAsync } from "@libs/common/databases";
 import { ApiResponse } from "@libs/common/services/api-response";

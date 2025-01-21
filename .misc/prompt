@@ -7,9 +7,12 @@ In the file name, use heading 4;
 Record within this json object what is requested in each property (in the count, ignore blank spaces):
 ```json
 {
-    linesChanged: number, 
-    linesIncluded: number, 
-    totalChars: number
+    changedLines: number,
+    includedLines: number,
+    totalChars: number,
+    changedFiles: number,
+    newFiles: number,
+    deletedfiles: number,
 }
 ```
 Reply only the commit message in...
