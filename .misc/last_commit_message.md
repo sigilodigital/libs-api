@@ -1,31 +1,22 @@
 ## Implementação de novas funcionalidades e ajustes em arquivos existentes
 
-#### common/src/externals/class-validator/index.ts
-- Adicionado ponto e vírgula ao final das linhas de exportação
+#### common/src/databases/index.ts
+- Alterada a mensagem de log para "Datasource: INITIALIZED!" ao inicializar o datasource
 
-#### common/src/models/classes/entity-abstract.class.ts
-- Criada nova classe abstrata `IsActiveEntityAbstractClass`
-- Alterado o tipo da propriedade `isActive` de opcional para obrigatório na classe `EntityAbstractClass`
-
-#### common/src/models/enumerations/codigo-acao.enum.ts
-- Renomeados alguns enums:
-  - `SERVICO_*` para `ORDER_*`
-  - `ORCAMENTO_*` para `BUDGET_*`
-
-#### common/src/repository/generic.repository.ts
-- Atualizado o caminho de importação para `EntityClassOrSchema` e outras entidades do TypeORM
+#### common/src/models/dto/entity-abstract.dto.ts
+- Criada nova classe abstrata `RequestAbstractDto` que estende `EntityAbstractDto`
+- Adicionada propriedade `__relations` na nova classe com decoradores `ApiProperty` e `Validate`
 
 #### package.json
-- Movidas dependências `supertest` e `typeorm-model-generator` para `devDependencies`
-- Removida dependência `typeorm-model-generator` das dependências principais
+- Adicionado novo script "sshkey" para gerar chave SSH
 
 ```json
 {
-  "changedLines": 30,
-  "includedLines": 9,
-  "totalChars": 1214,
-  "changedFiles": 5,
-  "newFiles": 2,
+  "changedLines": 13,
+  "includedLines": 10,
+  "totalChars": 620,
+  "changedFiles": 3,
+  "newFiles": 0,
   "deletedfiles": 0
 }
 ```

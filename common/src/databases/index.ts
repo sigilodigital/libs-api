@@ -11,7 +11,7 @@ export class AppDataSourceAsync {
 
         try {
             await dataSource.initialize();
-            console.info("Datasource: ", dataSource);
+            console.info("Datasource: INITIALIZED!");
         } catch (error) {
             console.error("Error during Data Source initialization", error);
         }

@@ -1,4 +1,5 @@
 Write a commit message for this diff with the following rules:
+Write a title sucinct to the commit
 Ignore the last_commit_message.md file;
 In the more detailed description, add the file name and then write what was changed or if there were new implementations and deletions;
 Use markdown formatting, but only as requested;

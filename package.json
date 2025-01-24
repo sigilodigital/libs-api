@@ -17,7 +17,8 @@
     "explain:br": "$npm_package_config_cody $(cat $npm_package_config_prompt) 'pt-br' > $npm_package_config_git_commit_message",
     "find:pack:update": "npx ncu",
     "circular:madge": "npx madge --circular --extensions ts ./",
-    "circular:dpdm": "npx dpdm ./common/src/common.module.ts ./audit/src/audit.module.ts"
+    "circular:dpdm": "npx dpdm ./common/src/common.module.ts ./audit/src/audit.module.ts",
+    "sshkey": "ssh-keygen -t ed25519 -C "
   },
   "repository": {
     "type": "git",
