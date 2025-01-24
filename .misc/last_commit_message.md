@@ -1,21 +1,18 @@
-## Implementação de novas funcionalidades e ajustes em arquivos existentes
+## Refatoração e melhorias no UtilService
 
-#### common/src/databases/index.ts
-- Alterada a mensagem de log para "Datasource: INITIALIZED!" ao inicializar o datasource
-
-#### common/src/models/dto/entity-abstract.dto.ts
-- Criada nova classe abstrata `RequestAbstractDto` que estende `EntityAbstractDto`
-- Adicionada propriedade `__relations` na nova classe com decoradores `ApiProperty` e `Validate`
-
-#### package.json
-- Adicionado novo script "sshkey" para gerar chave SSH
+#### common/src/services/util.service.ts
+- Implementado padrão Singleton para a classe UtilService
+- Métodos tokenGenerate e tokenVerify tornados estáticos
+- Adicionadas documentações JSDoc para métodos hashEncrypt, hashCompare e tokenDecodeWithoutVerify
+- Atualizada a interface IUtilService removendo métodos não mais necessários
+- Adicionado import de JwtSignOptions e ajustado o tipo do parâmetro options em tokenGenerate
 
 ```json
 {
-  "changedLines": 13,
-  "includedLines": 10,
-  "totalChars": 620,
-  "changedFiles": 3,
+  "changedLines": 37,
+  "includedLines": 27,
+  "totalChars": 1647,
+  "changedFiles": 1,
   "newFiles": 0,
   "deletedfiles": 0
 }
