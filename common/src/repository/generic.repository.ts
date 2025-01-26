@@ -156,7 +156,7 @@ export interface IGenericRepository<E> {
     findBy(partialEntity: FindOptionsWhere<E>, entityClass?: EntityTarget<E>): Promise<E[]>;
     findOne(partialEntity: FindManyOptions<E>, entityClass?: EntityTarget<E>): Promise<E>;
     findOneBy(partialEntity: FindOptionsWhere<E>, entityClass?: EntityTarget<E>): Promise<E>;
-    save(entity: E[], pkProperty?: string, dbSequenceName?: string): Promise<E[]>;
+    save(entity: E[], entityClass?: EntityTarget<E>, pkProperty?: string, dbSequenceName?: string, dbSchema?: string): Promise<E[]>;
     // update<F>(criteria: Partial<F>, entity: QueryDeepPartialEntity<F>, entityClass?: EntityTarget<F>): Promise<F>;
     update(criteria: Partial<E>, entity: QueryDeepPartialEntity<E>, entityClass?: EntityTarget<E>): Promise<UpdateResult>;
     delete(criteria: Partial<E>, entityClass?: EntityTarget<E>): Promise<DeleteResult>;

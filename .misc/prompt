@@ -10,7 +10,7 @@ Record within this json object what is requested in each property (in the count,
 {
     changedLines: number,
     includedLines: number,
-    totalChars: number,
+    totalChars: number, //do not count changed characters in the file last_commit_message.md
     changedFiles: number,
     newFiles: number,
     deletedfiles: number,
