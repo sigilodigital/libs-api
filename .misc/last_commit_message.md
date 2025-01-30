@@ -1,17 +1,20 @@
-## Melhorias no GenericRepository e ajustes de configuração
+## Atualização de DTOs e adição de ParamsDto
 
-#### common/src/repository/generic.repository.ts
-- Atualizada a assinatura do método `save` na interface `IGenericRepository`
-- Adicionados novos parâmetros opcionais: `entityClass`, `dbSchema`
+#### common/src/models/dto/entity-abstract.dto.ts
+- Alterado o nome da propriedade `__relations` para `__params`
+- Atualizada a descrição da propriedade na anotação `@ApiProperty`
 
-#### .misc/prompt
-- Atualizada a instrução para não contar caracteres alterados no arquivo last_commit_message.md
+#### common/src/models/dto/request-abstract.dto.ts
+- Adicionada nova classe abstrata `ParamsDto` com propriedades `relations`, `take` e `skip`
+- Atualizada a classe `RequestAbstractDto` para usar `ParamsDto`
+- Adicionada interface `IParamsDto`
+- Importado `ValidateNested` do `class-validator`
 
 ```json
 {
-  "changedLines": 3,
-  "includedLines": 1,
-  "totalChars": 197,
+  "changedLines": 31,
+  "includedLines": 25,
+  "totalChars": 1022,
   "changedFiles": 2,
   "newFiles": 0,
   "deletedfiles": 0

@@ -30,8 +30,8 @@ export abstract class EntityAbstractDto
 
 export abstract class RequestAbstractDto extends EntityAbstractDto {
 
-    @ApiProperty({ name: '__relations', type: Object, nullable: true, required: false })
+    @ApiProperty({ name: '__params', type: Object, nullable: true, required: false })
     @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'object', required: false }])
-    __relations?: Object;
+    __params?: Object;
 
 }

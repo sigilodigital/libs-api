@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Validate } from "class-validator";
+import { Validate, ValidateNested } from "class-validator";
 import { ValidaSchema } from "../../validations/schema.validate";
 import { IConstraintSchema } from "../interfaces/ConstraintsSchema";
 
@@ -28,10 +28,33 @@ export abstract class EntityAbstractDto
 
 }
 
+export abstract class ParamsDto implements IParamsDto {
+
+    @ApiProperty()
+    @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'object', required: false }])
+    relations?: Object;
+
+    @ApiProperty({ default: 10 })
+    @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'number', required: false }])
+    take?: number;
+
+    @ApiProperty({ default: 0 })
+    @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'number', required: false }])
+    skip?: number;
+
+}
+
 export abstract class RequestAbstractDto extends EntityAbstractDto {
 
-    @ApiProperty({ name: '__relations', type: Object, nullable: true, required: false })
-    @Validate(ValidaSchema, [<IConstraintSchema>{ type: 'object', required: false }])
-    __relations?: Object;
+    @ApiProperty()
+    @ValidateNested()
+    __params?: ParamsDto;
 
+}
+
+
+export interface IParamsDto {
+    relations?: Object;
+    take?: number;
+    skip?: number;
 }
